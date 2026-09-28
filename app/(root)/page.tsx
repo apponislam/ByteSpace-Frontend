@@ -1,5 +1,6 @@
 import HeroArea from "@/components/home/HeroArea";
 import Testimonial from "@/components/home/Testimonial";
+import ExloreSection from "@/components/home/ExloreSection";
 import CategorySection from "@/components/home/CategorySection";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
             <HeroArea />
             <Testimonial />
             <CategorySection />
+            <ExloreSection />
         </>
     );
 }
