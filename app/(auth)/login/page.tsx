@@ -14,8 +14,9 @@ export default function LoginPage() {
     return (
         <div className="w-full flex-1 flex flex-col justify-between p-4 sm:p-6 lg:p-10">
             <div className="container mx-auto w-full">
-                <Link href="/" className="inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-lg p-1 transition-transform duration-200 active:scale-95">
+                <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-lg p-1 transition-transform duration-200 active:scale-95">
                     <Image src="/logo.svg" alt="ByteSpace Logo" width={34} height={38} priority className="h-8 sm:h-9 w-auto object-contain" />
+                    <span className="font-clash font-bold tracking-tight text-white text-xl sm:text-2xl">ByteSpace</span>
                 </Link>
             </div>
 
