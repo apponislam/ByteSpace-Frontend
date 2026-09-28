@@ -8,6 +8,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-poppins), sans-serif;
+  --font-clash: var(--font-clash-display), sans-serif;
+  --font-satoshi: var(--font-satoshi), sans-serif;
   --font-mono: monospace;
   --font-heading: var(--font-poppins), sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
