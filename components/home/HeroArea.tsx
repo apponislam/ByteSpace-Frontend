@@ -14,14 +14,13 @@ export default function HeroArea() {
 
     return (
         <section className="relative w-full overflow-hidden bg-[#0052FE] pt-[130px] lg:pt-[150px]">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px), linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px)",
-          backgroundSize: "120px 120px",
-        }}
-      />
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    backgroundImage: "linear-gradient(to right, rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px), linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px)",
+                    backgroundSize: "120px 120px",
+                }}
+            />
 
             <div className="absolute -left-10 lg:left-0 top-[20%] w-[160px] sm:w-[220px] lg:w-[267px] pointer-events-none select-none z-10">
                 <Image src="/home/Hero/left1.svg" alt="Decorative Shape" width={267} height={387} priority className="w-full h-auto" />
@@ -97,13 +96,15 @@ export default function HeroArea() {
                             <span className="text-zinc-400 font-normal">(240)</span>
                             <Star className="size-3.5 fill-amber-400 text-amber-400" />
                         </div>
-                        <div className="flex items-center -space-x-1.5 mt-2">
+                        <div className="flex items-center mt-2">
                             {studentAvatars.map((avatar, idx) => (
-                                <div key={idx} className="relative size-6 sm:size-7 rounded-full overflow-hidden border-2 border-white ring-1 ring-black/5">
+                                <div key={idx} style={{ zIndex: idx + 1 }} className={`relative size-6 sm:size-7 rounded-full overflow-hidden ${idx > 0 ? "-ml-2.5" : ""}`}>
                                     <img src={avatar} alt="Student" className="w-full h-full object-cover" />
                                 </div>
                             ))}
-                            <div className="size-6 sm:size-7 rounded-full bg-[#D4FB20] text-black text-[10px] font-bold flex items-center justify-center border-2 border-white">2K+</div>
+                            <div style={{ zIndex: 10 }} className="relative -ml-2.5 size-6 sm:size-7 rounded-full bg-[#D4FB20] text-black text-[10px] font-bold flex items-center justify-center shrink-0">
+                                2K+
+                            </div>
                         </div>
                     </div>
                 </div>
