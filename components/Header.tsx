@@ -74,11 +74,11 @@ export default function Header() {
                 </nav>
 
                 <div className="hidden md:flex items-center gap-6 lg:gap-8">
-                    <Link href="/sign-in" className="text-base font-medium text-white/90 hover:text-white transition-colors duration-200">
+                    <Link href="/login" className="text-base font-medium text-white/90 hover:text-white transition-colors duration-200">
                         Sign In
                     </Link>
 
-                    <Link href="/join" className="text-base font-medium text-white/90 hover:text-white transition-colors duration-200">
+                    <Link href="/register" className="text-base font-medium text-white/90 hover:text-white transition-colors duration-200">
                         Join Us
                     </Link>
 
@@ -122,10 +122,10 @@ export default function Header() {
                 <div className="h-px w-full bg-white/15 my-0.5" />
 
                 <div className="flex flex-col gap-3">
-                    <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)} className="text-center w-full py-3 rounded-full border border-white/25 text-white text-sm font-medium hover:bg-white/10 active:scale-[0.99] transition-all">
+                    <Link href="/login" onClick={() => setMobileMenuOpen(false)} className="text-center w-full py-3 rounded-full border border-white/25 text-white text-sm font-medium hover:bg-white/10 active:scale-[0.99] transition-all">
                         Sign In
                     </Link>
-                    <Link href="/join" onClick={() => setMobileMenuOpen(false)} className="text-center w-full py-3 rounded-full bg-[#D4FB20] text-black text-sm font-semibold hover:bg-[#c3ea1a] active:scale-[0.99] transition-all shadow-md shadow-[#D4FB20]/20">
+                    <Link href="/register" onClick={() => setMobileMenuOpen(false)} className="text-center w-full py-3 rounded-full bg-[#D4FB20] text-black text-sm font-semibold hover:bg-[#c3ea1a] active:scale-[0.99] transition-all shadow-md shadow-[#D4FB20]/20">
                         Join Us
                     </Link>
                 </div>
