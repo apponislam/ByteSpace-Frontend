@@ -1,15 +1,17 @@
 import HeroArea from "@/components/home/HeroArea";
-import Testimonial from "@/components/home/Testimonial";
-import ExloreSection from "@/components/home/ExloreSection";
+import Companies from "@/components/home/Companies";
 import CategorySection from "@/components/home/CategorySection";
+import ExloreSection from "@/components/home/ExloreSection";
+import UnlockSection from "@/components/home/UnlockSection";
 
 export default function Home() {
-    return (
-        <>
-            <HeroArea />
-            <Testimonial />
-            <CategorySection />
-            <ExloreSection />
-        </>
-    );
+  return (
+    <>
+      <HeroArea />
+      <Companies />
+      <CategorySection />
+      <ExloreSection />
+      <UnlockSection />
+    </>
+  );
 }

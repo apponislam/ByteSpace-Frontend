@@ -51,19 +51,21 @@ export default function CourseCard({
     return (
         <div className={`group w-full bg-white rounded-[32px] border border-zinc-200/80 p-4 sm:p-5 flex flex-col justify-between font-satoshi shadow-sm hover:shadow-lg transition-all duration-300 ${className}`}>
             <div>
-                <div className="relative w-full aspect-[16/11] rounded-[22px] overflow-hidden bg-zinc-100">
+                <div className="relative w-full aspect-[16/9] rounded-[22px] overflow-hidden bg-zinc-100">
                     <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
 
-                    <div className="absolute inset-x-2.5 bottom-2.5 flex items-center justify-between gap-1.5 sm:gap-2">
-                        <span className="px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md text-[11px] sm:text-xs font-medium text-zinc-700 shadow-xs whitespace-nowrap">{formattedLessons}</span>
-                        <span className="px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md text-[11px] sm:text-xs font-medium text-zinc-700 shadow-xs whitespace-nowrap">{duration}</span>
-                        <span className="px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md text-[11px] sm:text-xs font-medium text-zinc-700 shadow-xs whitespace-nowrap">{formattedComments}</span>
+                    <div className="absolute inset-x-2.5 bottom-2.5 flex items-center justify-between gap-1 sm:gap-2">
+                        <span className="px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md text-[11px] font-medium text-zinc-700 shadow-xs whitespace-nowrap">{formattedLessons}</span>
+                        <span className="px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md text-[11px] font-medium text-zinc-700 shadow-xs whitespace-nowrap">{duration}</span>
+                        <span className="px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md text-[11px] font-medium text-zinc-700 shadow-xs whitespace-nowrap">{formattedComments}</span>
                     </div>
                 </div>
 
                 <div className="mt-5 flex items-start justify-between gap-3">
-                    <Link href={href} className="group-hover:text-[#0052FE] transition-colors">
-                        <h3 className="font-clash font-bold text-xl sm:text-[22px] leading-snug tracking-tight text-zinc-950">{title}</h3>
+                    <Link href={href} title={title} className="flex-1 min-w-0 group-hover:text-[#0052FE] transition-colors">
+                        <h3 title={title} className="font-sans font-semibold text-[20px] leading-snug tracking-tight text-zinc-950 truncate">
+                            {title}
+                        </h3>
                     </Link>
 
                     <div className="flex items-center gap-1 shrink-0 pt-0.5">
@@ -86,13 +88,17 @@ export default function CourseCard({
                     </div>
 
                     {enrolledStudents?.avatars && enrolledStudents.avatars.length > 0 && (
-                        <div className="flex items-center -space-x-2">
+                        <div className="flex items-center">
                             {enrolledStudents.avatars.slice(0, 4).map((avatar, idx) => (
-                                <div key={idx} className="relative size-7 sm:size-8 rounded-full overflow-hidden border-2 border-white ring-1 ring-black/5">
+                                <div key={idx} style={{ zIndex: idx + 1 }} className={`relative size-8 rounded-full overflow-hidden ${idx > 0 ? "-ml-3" : ""}`}>
                                     <img src={avatar} alt="Student" className="w-full h-full object-cover" />
                                 </div>
                             ))}
-                            {enrolledStudents.count && <div className="size-7 sm:size-8 rounded-full bg-[#D4FB20] text-black text-[11px] font-bold flex items-center justify-center border-2 border-white shrink-0">{enrolledStudents.count}</div>}
+                            {enrolledStudents.count && (
+                                <div style={{ zIndex: 10 }} className="relative -ml-3 size-8 rounded-full bg-[#D4FB20] text-black text-xs font-bold flex items-center justify-center  shrink-0">
+                                    {enrolledStudents.count}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
