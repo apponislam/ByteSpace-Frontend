@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
+import HeroArea from "@/components/home/HeroArea";
 
 export default function Home() {
-    return (
-        <div>
-            hii
-            <Button>button</Button>
-        </div>
-    );
+  return (
+    <>
+      <HeroArea />
+    </>
+  );
 }
