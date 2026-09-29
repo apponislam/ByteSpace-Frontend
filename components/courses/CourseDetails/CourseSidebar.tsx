@@ -1,19 +1,57 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FileText, Video, Award, MessageSquare } from "lucide-react";
+import { FileText, Video, Award, MessageSquare, Check } from "lucide-react";
+import { Course } from "@/data/course";
+import { CartItem, addToCart, getStoredCart, CART_UPDATED_EVENT } from "@/lib/cart";
 
 interface CourseSidebarProps {
+  course?: Course;
   price?: number;
   pricePeriod?: string;
 }
 
 export default function CourseSidebar({
+  course,
   price = 25,
   pricePeriod = "lifetime",
 }: CourseSidebarProps) {
+  const [inCart, setInCart] = useState(false);
+
+  useEffect(() => {
+    const checkCart = () => {
+      const cart = getStoredCart();
+      const courseId = course?.id || "course-bda";
+      const courseSlug = course?.slug || "build-digital-asset";
+      setInCart(cart.some((item) => item.id === courseId || item.slug === courseSlug));
+    };
+
+    checkCart();
+    window.addEventListener(CART_UPDATED_EVENT, checkCart);
+    window.addEventListener("storage", checkCart);
+
+    return () => {
+      window.removeEventListener(CART_UPDATED_EVENT, checkCart);
+      window.removeEventListener("storage", checkCart);
+    };
+  }, [course]);
+
+  const handleEnroll = () => {
+    const item: CartItem = {
+      id: course?.id || "course-bda",
+      slug: course?.slug || "build-digital-asset",
+      title: course?.title || "Build Digital Asset: A Comprehensive Guide",
+      category: course?.category || "Creative Marketing",
+      instructor: course?.author?.name || "PurePearl Studio",
+      price: course?.price ?? price,
+      image: course?.image || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    };
+    addToCart(item);
+    setInCart(true);
+  };
+
   const previewLessons = [
     { number: "01", title: "Introduction to Digital Assets", duration: "12 mins" },
     { number: "02", title: "Design Principles for Impacts", duration: "21 mins" },
@@ -26,6 +64,12 @@ export default function CourseSidebar({
     { icon: Award, label: "Certificate of Completion" },
     { icon: MessageSquare, label: "Private Consultation" },
   ];
+
+  const actualPrice = course?.price ?? price;
+  const actualPeriod = course?.pricePeriod ?? pricePeriod;
+  const authorName = course?.author?.name || "PurePearl Studio";
+  const authorAvatar = course?.author?.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80";
+  const authorHref = course?.author?.href || "/creators/purepearl";
 
   return (
     <div className="w-full bg-white rounded-3xl p-6 sm:p-7 shadow-2xl border border-zinc-100 flex flex-col gap-6">
@@ -58,16 +102,24 @@ export default function CourseSidebar({
 
         <div className="mt-5 flex items-baseline gap-1">
           <span className="font-clash font-bold text-3xl sm:text-4xl text-[#0052FE] tracking-tight">
-            ${price}
+            ${actualPrice}
           </span>
-          <span className="text-zinc-500 text-sm font-normal">/{pricePeriod}</span>
+          <span className="text-zinc-500 text-sm font-normal">/{actualPeriod}</span>
         </div>
 
         <button
           type="button"
-          className="mt-4 w-full h-12 sm:h-13 rounded-full bg-[#D4FB20] hover:bg-[#c3ea1a] text-black font-bold text-sm sm:text-base flex items-center justify-center transition-all active:scale-98 shadow-sm cursor-pointer"
+          onClick={handleEnroll}
+          className="mt-4 w-full h-12 sm:h-13 rounded-full bg-[#D4FB20] hover:bg-[#c3ea1a] text-black font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all active:scale-98 shadow-sm cursor-pointer"
         >
-          Enroll Now
+          {inCart ? (
+            <>
+              <Check className="size-5 text-black stroke-[2.5]" />
+              <span>Added to Cart &bull; View</span>
+            </>
+          ) : (
+            <span>Enroll Now</span>
+          )}
         </button>
       </div>
 
@@ -92,8 +144,8 @@ export default function CourseSidebar({
         <div className="flex items-center gap-3">
           <div className="relative size-11 rounded-full overflow-hidden shrink-0 bg-zinc-200">
             <Image
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
-              alt="PurePearl Studio"
+              src={authorAvatar}
+              alt={authorName}
               width={48}
               height={48}
               className="w-full h-full object-cover"
@@ -101,7 +153,7 @@ export default function CourseSidebar({
           </div>
           <div>
             <h5 className="font-bold text-sm text-zinc-900 leading-tight">
-              PurePearl Studio
+              {authorName}
             </h5>
             <span className="text-xs text-zinc-500">Professional Creator</span>
           </div>
@@ -112,7 +164,7 @@ export default function CourseSidebar({
         </p>
 
         <Link
-          href="/creators/purepearl"
+          href={authorHref}
           className="mt-4 inline-flex items-center justify-center px-5 py-2 rounded-full border border-zinc-200 text-xs font-semibold text-zinc-800 hover:bg-zinc-50 transition-colors cursor-pointer"
         >
           See Full Profile

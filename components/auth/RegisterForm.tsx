@@ -33,7 +33,7 @@ export default function RegisterForm() {
     };
 
     return (
-        <div className="w-full max-w-135 bg-white rounded-3xl p-7 sm:p-10 lg:p-12 shadow-2xl">
+        <div className="w-full max-w-135 bg-white rounded-3xl p-7 sm:p-10 lg:p-12 shadow-2xl transition-all duration-300 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)]">
             <span className="text-[#0052FE] text-xs sm:text-sm font-semibold tracking-wide">Create an account</span>
             <h1 className="text-2xl sm:text-3xl lg:text-[38px] font-bold text-zinc-900 tracking-tight mt-1 leading-tight">Welcome to ByteSpace</h1>
 
@@ -47,8 +47,8 @@ export default function RegisterForm() {
                         type="text"
                         placeholder="James David"
                         {...register("fullName")}
-                        className={`w-full px-4 py-3 sm:py-3.5 rounded-xl border text-zinc-900 text-sm sm:text-base placeholder:text-zinc-400 focus:outline-none transition-all ${
-                            errors.fullName ? "border-red-500 focus:ring-2 focus:ring-red-500/20" : "border-zinc-200 focus:ring-2 focus:ring-[#0052FE]/30 focus:border-[#0052FE]"
+                        className={`w-full px-4 py-3 sm:py-3.5 rounded-xl border text-sm sm:text-base placeholder:text-zinc-400 focus:outline-none transition-all duration-200 ${
+                            errors.fullName ? "border-red-500 focus:ring-2 focus:ring-red-500/20" : "border-zinc-200 focus:ring-2 focus:ring-[#0052FE]/40"
                         }`}
                     />
                     {errors.fullName && <span className="text-xs text-red-500">{errors.fullName.message}</span>}
@@ -63,8 +63,8 @@ export default function RegisterForm() {
                         type="email"
                         placeholder="designer@example.com"
                         {...register("email")}
-                        className={`w-full px-4 py-3 sm:py-3.5 rounded-xl border text-zinc-900 text-sm sm:text-base placeholder:text-zinc-400 focus:outline-none transition-all ${
-                            errors.email ? "border-red-500 focus:ring-2 focus:ring-red-500/20" : "border-zinc-200 focus:ring-2 focus:ring-[#0052FE]/30 focus:border-[#0052FE]"
+                        className={`w-full px-4 py-3 sm:py-3.5 rounded-xl border text-sm sm:text-base placeholder:text-zinc-400 focus:outline-none transition-all duration-200 ${
+                            errors.email ? "border-red-500 focus:ring-2 focus:ring-red-500/20" : "border-zinc-200 focus:ring-2 focus:ring-[#0052FE]/40"
                         }`}
                     />
                     {errors.email && <span className="text-xs text-red-500">{errors.email.message}</span>}
@@ -79,15 +79,19 @@ export default function RegisterForm() {
                         type="password"
                         placeholder="********"
                         {...register("password")}
-                        className={`w-full px-4 py-3 sm:py-3.5 rounded-xl border text-zinc-900 text-sm sm:text-base placeholder:text-zinc-400 focus:outline-none transition-all ${
-                            errors.password ? "border-red-500 focus:ring-2 focus:ring-red-500/20" : "border-zinc-200 focus:ring-2 focus:ring-[#0052FE]/30 focus:border-[#0052FE]"
+                        className={`w-full px-4 py-3 sm:py-3.5 rounded-xl border text-sm sm:text-base placeholder:text-zinc-400 focus:outline-none transition-all duration-200 ${
+                            errors.password ? "border-red-500 focus:ring-2 focus:ring-red-500/20" : "border-zinc-200 focus:ring-2 focus:ring-[#0052FE]/40"
                         }`}
                     />
                     {errors.password && <span className="text-xs text-red-500">{errors.password.message}</span>}
                 </div>
 
                 <div className="flex justify-end mt-2">
-                    <button type="submit" disabled={isSubmitting} className="h-11 sm:h-12 px-8 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-sm cursor-pointer disabled:opacity-50">
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="h-11 sm:h-12 px-8 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer disabled:opacity-50"
+                    >
                         Continue
                     </button>
                 </div>
@@ -100,13 +104,21 @@ export default function RegisterForm() {
             </div>
 
             <div className="flex items-center justify-center gap-4">
-                <button type="button" aria-label="Sign up with Facebook" className="size-12 sm:size-14 rounded-2xl border border-zinc-200 flex items-center justify-center hover:bg-zinc-50 active:scale-95 transition-all cursor-pointer">
+                <button
+                    type="button"
+                    aria-label="Sign up with Facebook"
+                    className="size-12 sm:size-14 rounded-2xl border border-zinc-200 flex items-center justify-center hover:bg-zinc-50 hover:border-zinc-300 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-sm"
+                >
                     <svg className="size-5 fill-[#1877F2]" viewBox="0 0 24 24">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                 </button>
 
-                <button type="button" aria-label="Sign up with Google" className="size-12 sm:size-14 rounded-2xl border border-zinc-200 flex items-center justify-center hover:bg-zinc-50 active:scale-95 transition-all cursor-pointer">
+                <button
+                    type="button"
+                    aria-label="Sign up with Google"
+                    className="size-12 sm:size-14 rounded-2xl border border-zinc-200 flex items-center justify-center hover:bg-zinc-50 hover:border-zinc-300 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-sm"
+                >
                     <svg className="size-5" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z" />
                         <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.36 24 12 24z" />
@@ -118,7 +130,7 @@ export default function RegisterForm() {
 
             <div className="text-center text-xs sm:text-sm text-zinc-500 mt-8">
                 Already have an account?{" "}
-                <Link href="/login" className="text-[#0052FE] hover:underline font-semibold">
+                <Link href="/login" className="text-[#0052FE] hover:underline font-semibold hover:text-[#003BE2] transition-colors">
                     Log in
                 </Link>
             </div>
