@@ -90,7 +90,11 @@ export default function Footer() {
                         <Link href="/terms" className="hover:text-black transition-colors font-normal">
                             Terms of Service
                         </Link>
-                        <button type="button" className="hover:text-black transition-colors cursor-pointer font-normal">
+                        <button
+                            type="button"
+                            onClick={() => typeof window !== "undefined" && window.dispatchEvent(new Event("open-cookie-settings"))}
+                            className="hover:text-black transition-colors cursor-pointer font-normal"
+                        >
                             Cookies Settings
                         </button>
                     </div>
