@@ -52,7 +52,7 @@ export default function CategorySection() {
                         {row1.map((cat) => {
                             const isActive = selected === cat;
                             return (
-                                <button key={cat} type="button" onClick={() => setSelected(cat)} className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${isActive ? "bg-[#D4FB20] text-black shadow-sm font-semibold" : "bg-[#F3F4F6] text-zinc-700 hover:bg-[#E5E7EB]"}`}>
+                                <button key={cat} type="button" onClick={() => setSelected(cat)} className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer hover:-translate-y-0.5 active:scale-95 ${isActive ? "bg-[#D4FB20] text-black shadow-md font-semibold scale-102" : "bg-[#F3F4F6] text-zinc-700 hover:bg-[#E5E7EB]"}`}>
                                     {cat}
                                 </button>
                             );
@@ -63,7 +63,7 @@ export default function CategorySection() {
                         {row2.map((cat) => {
                             const isActive = selected === cat;
                             return (
-                                <button key={cat} type="button" onClick={() => setSelected(cat)} className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${isActive ? "bg-[#D4FB20] text-black shadow-sm font-semibold" : "bg-[#F3F4F6] text-zinc-700 hover:bg-[#E5E7EB]"}`}>
+                                <button key={cat} type="button" onClick={() => setSelected(cat)} className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer hover:-translate-y-0.5 active:scale-95 ${isActive ? "bg-[#D4FB20] text-black shadow-md font-semibold scale-102" : "bg-[#F3F4F6] text-zinc-700 hover:bg-[#E5E7EB]"}`}>
                                     {cat}
                                 </button>
                             );
@@ -74,20 +74,22 @@ export default function CategorySection() {
                         {row3.map((cat) => {
                             const isActive = selected === cat;
                             return (
-                                <button key={cat} type="button" onClick={() => setSelected(cat)} className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${isActive ? "bg-[#D4FB20] text-black shadow-sm font-semibold" : "bg-[#F3F4F6] text-zinc-700 hover:bg-[#E5E7EB]"}`}>
+                                <button key={cat} type="button" onClick={() => setSelected(cat)} className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer hover:-translate-y-0.5 active:scale-95 ${isActive ? "bg-[#D4FB20] text-black shadow-md font-semibold scale-102" : "bg-[#F3F4F6] text-zinc-700 hover:bg-[#E5E7EB]"}`}>
                                     {cat}
                                 </button>
                             );
                         })}
-                        <Link href="/courses" className="text-[#0052FE] hover:text-blue-700 font-medium text-sm px-3 py-2 transition-colors inline-flex items-center cursor-pointer">
+                        <Link href="/categories" className="text-[#0052FE] hover:text-blue-700 font-semibold text-sm px-3.5 py-2 rounded-full hover:bg-blue-50 transition-all duration-200 inline-flex items-center cursor-pointer hover:-translate-y-0.5">
                             + More
                         </Link>
                     </div>
                 </div>
 
-                <div className="w-full mt-14 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div key={selected} className="w-full mt-14 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 animate-in fade-in-50 duration-300">
                     {displayCourses.map((course) => (
-                        <CourseCard key={course.id} {...course} />
+                        <div key={course.id} className="transition-transform duration-300 hover:-translate-y-1">
+                            <CourseCard {...course} />
+                        </div>
                     ))}
                 </div>
             </div>

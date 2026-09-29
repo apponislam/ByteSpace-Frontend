@@ -21,7 +21,7 @@ export default function GrowthSection() {
         <section className="relative w-full overflow-hidden bg-white py-20 sm:py-24 lg:py-32">
             {/* Top-Left Lime Accent: #CBFC01 at 60% opacity */}
             <div
-                className="absolute -top-24 -left-32 w-162.5 h-162.5 rounded-full pointer-events-none select-none blur-[90px]"
+                className="absolute -top-24 -left-32 w-162.5 h-162.5 rounded-full pointer-events-none select-none blur-[90px] animate-glow-drift-1"
                 style={{
                     background: "radial-gradient(circle, rgba(203, 252, 1, 0.6) 0%, rgba(203, 252, 1, 0.23) 53%, rgba(203, 252, 1, 0.06) 75%, rgba(203, 252, 1, 0) 100%)",
                 }}
@@ -29,7 +29,7 @@ export default function GrowthSection() {
 
             {/* Top-Right Blue Accent: #003BE2 at 8% opacity */}
             <div
-                className="absolute top-[10%] -right-24 w-150 h-150 rounded-full pointer-events-none select-none blur-[100px]"
+                className="absolute top-[10%] -right-24 w-150 h-150 rounded-full pointer-events-none select-none blur-[100px] animate-glow-drift-2"
                 style={{
                     background: "radial-gradient(circle, rgba(0, 59, 226, 0.08) 0%, rgba(0, 59, 226, 0.04) 53%, rgba(0, 59, 226, 0.01) 75%, rgba(0, 59, 226, 0) 100%)",
                 }}
@@ -37,7 +37,7 @@ export default function GrowthSection() {
 
             {/* Bottom-Left Lime Accent: #CBFC01 at 40% opacity */}
             <div
-                className="absolute bottom-[5%] -left-28 w-150 h-150 rounded-full pointer-events-none select-none blur-[90px]"
+                className="absolute bottom-[5%] -left-28 w-150 h-150 rounded-full pointer-events-none select-none blur-[90px] animate-glow-drift-2 [animation-delay:2s]"
                 style={{
                     background: "radial-gradient(circle, rgba(203, 252, 1, 0.4) 0%, rgba(203, 252, 1, 0.23) 53%, rgba(203, 252, 1, 0.06) 75%, rgba(203, 252, 1, 0) 100%)",
                 }}
@@ -45,7 +45,7 @@ export default function GrowthSection() {
 
             {/* Bottom-Right Blue Accent: #003BE2 at 24% opacity */}
             <div
-                className="absolute -bottom-24 -right-28 w-175 h-175 rounded-full pointer-events-none select-none blur-[110px]"
+                className="absolute -bottom-24 -right-28 w-175 h-175 rounded-full pointer-events-none select-none blur-[110px] animate-glow-drift-1 [animation-delay:1.5s]"
                 style={{
                     background: "radial-gradient(circle, rgba(0, 59, 226, 0.24) 0%, rgba(0, 59, 226, 0.12) 53%, rgba(0, 59, 226, 0.03) 75%, rgba(0, 59, 226, 0) 100%)",
                 }}
@@ -65,17 +65,17 @@ export default function GrowthSection() {
                         </p>
 
                         <div className="flex items-center gap-8 sm:gap-12 mt-8 sm:mt-10">
-                            <div>
+                            <div className="hover:scale-105 transition-transform duration-200 cursor-default">
                                 <div className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0052FE] tracking-tight">12K</div>
                                 <div className="text-sm sm:text-base font-medium text-[#64748B] mt-1">Students</div>
                             </div>
 
-                            <div>
+                            <div className="hover:scale-105 transition-transform duration-200 cursor-default">
                                 <div className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0052FE] tracking-tight">70+</div>
                                 <div className="text-sm sm:text-base font-medium text-[#64748B] mt-1">Courses</div>
                             </div>
 
-                            <div>
+                            <div className="hover:scale-105 transition-transform duration-200 cursor-default">
                                 <div className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0052FE] tracking-tight">16</div>
                                 <div className="text-sm sm:text-base font-medium text-[#64748B] mt-1">Creators</div>
                             </div>
@@ -83,11 +83,11 @@ export default function GrowthSection() {
                     </div>
 
                     <div className="relative w-full max-w-140 mx-auto min-h-105 sm:min-h-125 flex items-center justify-center">
-                        <div className="absolute top-0 left-0 w-[58%] sm:w-[62%] z-10 pointer-events-none select-none drop-shadow-xl">
+                        <div className="absolute top-0 left-0 w-[58%] sm:w-[62%] z-10 pointer-events-none select-none drop-shadow-xl animate-hero-float-gentle">
                             <Image src="/home/growth/peson1back.svg" alt="Course Card" width={373} height={384} priority className="w-full h-auto object-contain" />
                         </div>
 
-                        <div className="absolute top-2 sm:top-4 right-0 sm:right-4 w-[28%] sm:w-[32%] z-0 pointer-events-none select-none">
+                        <div className="absolute top-2 sm:top-4 right-0 sm:right-4 w-[28%] sm:w-[32%] z-0 pointer-events-none select-none animate-hero-float [animation-delay:1s]">
                             <Image src="/home/growth/person1icon1.png" alt="Shape" width={216} height={216} priority className="w-full h-auto object-contain" />
                         </div>
 
@@ -95,11 +95,11 @@ export default function GrowthSection() {
                             <Image src="/home/growth/person1.svg" alt="Student with laptop" width={703} height={688} priority className="w-full h-auto object-contain" />
                         </div>
 
-                        <div className="absolute top-[42%] -right-2.5 sm:-right-3.75 z-30 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-2xl border border-white/80 w-42.5 sm:w-50">
+                        <div className="absolute top-[42%] -right-2.5 sm:-right-3.75 z-30 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-2xl border border-white/80 w-42.5 sm:w-50 animate-hero-float-reverse hover:scale-105 transition-transform cursor-default">
                             <span className="text-[11px] sm:text-xs font-semibold text-zinc-500">Learning Progress</span>
                             <div className="text-2xl sm:text-3xl font-extrabold text-zinc-900 mt-1">55%</div>
                             <div className="w-full bg-zinc-100 rounded-full h-2 mt-2.5 overflow-hidden">
-                                <div className="bg-[#D4FB20] h-full rounded-full w-[55%]" />
+                                <div className="bg-[#D4FB20] h-full rounded-full w-[55%] transition-all duration-1000 ease-out" />
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export default function GrowthSection() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
                     <div className="order-2 lg:order-1 relative w-full max-w-140 mx-auto min-h-110 sm:min-h-130 flex items-center justify-center">
-                        <div className="absolute top-[28%] right-2 sm:right-6 w-[28%] sm:w-[32%] z-0 pointer-events-none select-none">
+                        <div className="absolute top-[28%] right-2 sm:right-6 w-[28%] sm:w-[32%] z-0 pointer-events-none select-none animate-hero-float-gentle">
                             <Image src="/home/growth/person2icon1.png" alt="Shape" width={217} height={216} priority className="w-full h-auto object-contain" />
                         </div>
 
@@ -115,7 +115,7 @@ export default function GrowthSection() {
                             <Image src="/home/growth/person2.svg" alt="Creator with tablet" width={579} height={719} priority className="w-full h-auto object-contain" />
                         </div>
 
-                        <div className="absolute top-[8%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-42.5">
+                        <div className="absolute top-[8%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-42.5 animate-hero-float hover:scale-105 transition-transform cursor-default">
                             <div className="text-[11px] sm:text-xs text-white/90 font-medium">Total Revenue</div>
                             <div className="text-[9px] text-white/60 font-normal">July 1-28</div>
                             <div className="text-lg sm:text-xl font-bold text-white mt-1">$120.29</div>
@@ -124,7 +124,7 @@ export default function GrowthSection() {
                             </div>
                         </div>
 
-                        <div className="absolute top-[32%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-42.5">
+                        <div className="absolute top-[32%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-42.5 animate-hero-float-reverse [animation-delay:1.2s] hover:scale-105 transition-transform cursor-default">
                             <div className="text-[11px] sm:text-xs text-white/90 font-medium">Year to Date</div>
                             <div className="text-[9px] text-white/60 font-normal">2023</div>
                             <div className="text-lg sm:text-xl font-bold text-white mt-1">$1,200.38</div>
@@ -133,7 +133,7 @@ export default function GrowthSection() {
                             </div>
                         </div>
 
-                        <div className="absolute bottom-[16%] sm:bottom-[18%] right-[3%] sm:right-[6%] lg:right-[8%] z-20 bg-white rounded-2xl p-4 sm:p-5 shadow-[0_20px_45px_rgba(0,0,0,0.12)] border border-slate-100">
+                        <div className="absolute bottom-[16%] sm:bottom-[18%] right-[3%] sm:right-[6%] lg:right-[8%] z-20 bg-white rounded-2xl p-4 sm:p-5 shadow-[0_20px_45px_rgba(0,0,0,0.12)] border border-slate-100 animate-hero-float [animation-delay:2s] hover:scale-105 transition-transform cursor-default">
                             <h4 className="font-bold text-zinc-900 text-sm sm:text-base leading-tight">Happy Students</h4>
                             <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-zinc-800 mt-1">
                                 <span>4.5</span>
@@ -166,7 +166,7 @@ export default function GrowthSection() {
 
                         <ul className="mt-8 sm:mt-10 space-y-4">
                             {creatorFeatures.map((feature, idx) => (
-                                <li key={idx} className="flex items-center gap-3.5 text-base sm:text-lg font-medium text-[#0F172A]">
+                                <li key={idx} className="flex items-center gap-3.5 text-base sm:text-lg font-medium text-[#0F172A] hover:translate-x-1.5 transition-transform duration-200 cursor-default">
                                     <div className="size-5 sm:size-6 rounded-full bg-[#0052FE] flex items-center justify-center shrink-0 text-white shadow-sm">
                                         <Check className="size-3.5 sm:size-4 stroke-3" />
                                     </div>
