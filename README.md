@@ -110,6 +110,10 @@ ByteSpace-Frontend/
 │   │   │   ├── page.tsx         # Catalog page (/courses)
 │   │   │   └── [slug]/          # Course details page (/courses/[slug])
 │   │   │       └── page.tsx
+│   │   ├── categories/          # Category routes
+│   │   │   ├── page.tsx         # Categories directory (/categories)
+│   │   │   └── [category]/      # Category courses page (/categories/[category])
+│   │   │       └── page.tsx
 │   │   ├── creators/            # Creator routes
 │   │   │   ├── page.tsx         # Creators directory (/creators)
 │   │   │   └── [slug]/          # Creator profile page (/creators/[slug])

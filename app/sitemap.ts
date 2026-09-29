@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { coursesData } from "@/data/course";
 import { creatorsData } from "@/data/creator";
+import { categoriesData } from "@/data/category";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = "https://bytespace-frontend-indol.vercel.app";
@@ -17,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
             changeFrequency: "daily",
             priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/categories`,
+            lastModified: new Date(),
+            changeFrequency: "daily",
+            priority: 0.85,
         },
         {
             url: `${baseUrl}/creators`,
@@ -62,6 +69,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ];
 
+    const categoryRoutes: MetadataRoute.Sitemap = categoriesData.map((category) => ({
+        url: `${baseUrl}/categories/${category.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.8,
+    }));
+
     const courseRoutes: MetadataRoute.Sitemap = coursesData.map((course) => ({
         url: `${baseUrl}/courses/${course.slug}`,
         lastModified: new Date(),
@@ -76,5 +90,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.75,
     }));
 
-    return [...staticRoutes, ...courseRoutes, ...creatorRoutes];
+    return [...staticRoutes, ...categoryRoutes, ...courseRoutes, ...creatorRoutes];
 }
