@@ -51,7 +51,7 @@ export default function CourseCard({
     return (
         <div className={`group w-full bg-white rounded-[32px] border border-zinc-200/80 p-4 sm:p-5 flex flex-col justify-between font-satoshi shadow-sm hover:shadow-lg transition-all duration-300 ${className}`}>
             <div>
-                <div className="relative w-full aspect-[16/9] rounded-[22px] overflow-hidden bg-zinc-100">
+                <div className="relative w-full aspect-video rounded-[22px] overflow-hidden bg-zinc-100">
                     <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
 
                     <div className="absolute inset-x-2.5 bottom-2.5 flex items-center justify-between gap-1 sm:gap-2">

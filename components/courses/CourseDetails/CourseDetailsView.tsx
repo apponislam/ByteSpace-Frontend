@@ -129,10 +129,10 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
                     backgroundSize: "120px 120px",
                 }}
             >
-                {!videoBottom && <div className="w-full h-[720px] sm:h-[800px] md:h-[880px] lg:h-[940px]" />}
+                {!videoBottom && <div className="w-full h-180 sm:h-200 md:h-220 lg:h-235" />}
             </div>
 
-            <div className="relative z-10 w-full pt-[130px] sm:pt-[150px] md:pt-[160px] pb-16 sm:pb-24">
+            <div className="relative z-10 w-full pt-32.5 sm:pt-37.5 md:pt-40 pb-16 sm:pb-24">
                 <div className="container mx-auto px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                         <div className="max-w-3xl">
@@ -243,8 +243,15 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
 
                     <div className="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                         <div className="lg:col-span-8 flex flex-col">
-                            <div ref={videoRef} className="relative w-full aspect-[16/10] rounded-[28px] sm:rounded-[36px] overflow-hidden bg-zinc-900 shadow-2xl border-4 border-white group">
-                                <Image src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80" alt="Course Video Preview" fill priority sizes="(max-width: 1024px) 100vw, 66vw" className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                            <div ref={videoRef} className="relative w-full aspect-16/10 rounded-[28px] sm:rounded-[36px] overflow-hidden bg-zinc-900 shadow-2xl border-4 border-white group">
+                                <Image
+                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Course Video Preview"
+                                    fill
+                                    priority
+                                    sizes="(max-width: 1024px) 100vw, 66vw"
+                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                />
 
                                 <div className="absolute inset-0 bg-black/15 flex items-center justify-center">
                                     <button type="button" aria-label="Play Course Preview" className="size-16 sm:size-20 rounded-full bg-white/75 hover:bg-white backdrop-blur-md flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer">
@@ -257,7 +264,12 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
                                 {tabs.map((tab) => {
                                     const isActive = activeTab === tab.id;
                                     return (
-                                        <button key={tab.id} type="button" onClick={() => setActiveTab(tab.id as typeof activeTab)} className={`px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${isActive ? "bg-[#D4FB20] text-black shadow-xs" : "bg-[#F4F4F6] text-zinc-700 hover:bg-zinc-200"}`}>
+                                        <button
+                                            key={tab.id}
+                                            type="button"
+                                            onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                                            className={`px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${isActive ? "bg-[#D4FB20] text-black shadow-xs" : "bg-[#F4F4F6] text-zinc-700 hover:bg-zinc-200"}`}
+                                        >
                                             {tab.label}
                                         </button>
                                     );

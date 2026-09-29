@@ -56,7 +56,9 @@ export default function Header() {
     ];
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out ${scrolled || mobileMenuOpen ? "bg-[#0047FF]/85 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(0,15,80,0.3)] border-b border-white/15 h-16 sm:h-20 md:h-[88px]" : "bg-transparent border-b border-transparent h-20 sm:h-24 md:h-[120px]"}`}>
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out ${scrolled || mobileMenuOpen ? "bg-[#0047FF]/85 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(0,15,80,0.3)] border-b border-white/15 h-16 sm:h-20 md:h-22" : "bg-transparent border-b border-transparent h-20 sm:h-24 md:h-30"}`}
+        >
             <div className="container mx-auto h-full px-4 sm:px-6 flex items-center justify-between relative">
                 <Link href="/" className="group flex items-center gap-2.5 sm:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-lg py-1 transition-transform duration-200 active:scale-95" onClick={() => setMobileMenuOpen(false)}>
                     <div className="relative flex items-center justify-center">
@@ -67,7 +69,11 @@ export default function Header() {
 
                 <nav className="hidden md:flex items-center gap-8 lg:gap-10">
                     {navLinks.map((link) => (
-                        <Link key={link.name} href={link.href} className="text-base font-medium text-white/90 hover:text-white transition-colors duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            className="text-base font-medium text-white/90 hover:text-white transition-colors duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                        >
                             {link.name}
                         </Link>
                     ))}
@@ -92,17 +98,25 @@ export default function Header() {
                         <ShoppingBag className="size-5 stroke-[1.8]" />
                     </Link>
 
-                    <button type="button" onClick={() => setMobileMenuOpen((prev) => !prev)} className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 cursor-pointer active:scale-95" aria-label={mobileMenuOpen ? "Close menu" : "Open menu"} aria-expanded={mobileMenuOpen}>
+                    <button
+                        type="button"
+                        onClick={() => setMobileMenuOpen((prev) => !prev)}
+                        className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 cursor-pointer active:scale-95"
+                        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={mobileMenuOpen}
+                    >
                         {mobileMenuOpen ? <X className="size-6 transition-transform duration-200" /> : <Menu className="size-6 transition-transform duration-200" />}
                     </button>
                 </div>
             </div>
 
-            <div className={`absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-opacity duration-300 pointer-events-none ${scrolled ? "opacity-100" : "opacity-0"}`} />
+            <div className={`absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent transition-opacity duration-300 pointer-events-none ${scrolled ? "opacity-100" : "opacity-0"}`} />
 
             {mobileMenuOpen && <div className="fixed inset-0 top-0 bg-black/60 backdrop-blur-sm z-[-1] md:hidden transition-opacity duration-300" onClick={() => setMobileMenuOpen(false)} />}
 
-            <div className={`md:hidden absolute top-full left-0 right-0 bg-[#0047FF]/95 backdrop-blur-2xl border-b border-white/20 px-5 sm:px-6 py-6 flex flex-col gap-5 shadow-2xl text-white transition-all duration-300 origin-top ${mobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
+            <div
+                className={`md:hidden absolute top-full left-0 right-0 bg-[#0047FF]/95 backdrop-blur-2xl border-b border-white/20 px-5 sm:px-6 py-6 flex flex-col gap-5 shadow-2xl text-white transition-all duration-300 origin-top ${mobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
+            >
                 <nav className="flex flex-col gap-1.5">
                     {navLinks.map((link) => (
                         <Link key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white/90 hover:text-white transition-colors py-2.5 px-3.5 rounded-xl hover:bg-white/10 active:bg-white/15 flex items-center justify-between">

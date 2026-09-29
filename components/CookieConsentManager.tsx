@@ -21,23 +21,28 @@ const DEFAULT_PREFERENCES: CookiePreferences = {
 export default function CookieConsentManager() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [showBanner, setShowBanner] = useState<boolean>(false);
-    const [preferences, setPreferences] = useState<CookiePreferences>(DEFAULT_PREFERENCES);
+    const [preferences, setPreferences] = useState<CookiePreferences>(() => {
+        if (typeof window !== "undefined") {
+            try {
+                const stored = localStorage.getItem("bytespace_cookie_preferences");
+                if (stored) return JSON.parse(stored);
+            } catch {}
+        }
+        return DEFAULT_PREFERENCES;
+    });
     const [toastMessage, setToastMessage] = useState<string | null>(null);
 
     useEffect(() => {
-        // Check stored preferences
+        // Check stored preferences for banner visibility
         try {
             const stored = localStorage.getItem("bytespace_cookie_preferences");
-            if (stored) {
-                setPreferences(JSON.parse(stored));
-                setShowBanner(false);
-            } else {
-                // Show banner after short delay for optimal UX
+            if (!stored) {
                 const timer = setTimeout(() => setShowBanner(true), 1000);
                 return () => clearTimeout(timer);
             }
         } catch {
-            setShowBanner(true);
+            const timer = setTimeout(() => setShowBanner(true), 1000);
+            return () => clearTimeout(timer);
         }
     }, []);
 
@@ -137,81 +142,81 @@ export default function CookieConsentManager() {
 
             {/* Cookie Settings Modal */}
             {isOpen && (
-                <div className="fixed inset-0 z-90 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 font-satoshi">
-                    <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl border border-zinc-200 overflow-hidden animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+                <div className="fixed inset-0 z-90 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 font-satoshi">
+                    <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] flex flex-col shadow-2xl border border-zinc-200 overflow-hidden animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
                         {/* Modal Header */}
-                        <div className="px-6 py-5 border-b border-zinc-100 flex items-center justify-between bg-zinc-50/50">
-                            <div className="flex items-center gap-3">
-                                <div className="p-2 bg-[#D4FB20]/30 text-black rounded-xl">
+                        <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-zinc-100 flex items-center justify-between bg-zinc-50/50">
+                            <div className="flex items-center gap-2.5 sm:gap-3">
+                                <div className="p-2 bg-[#D4FB20]/30 text-black rounded-xl shrink-0">
                                     <ShieldCheck className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="font-clash font-bold text-lg text-zinc-900">Cookie Preference Center</h3>
-                                    <p className="text-xs text-zinc-500">Manage how cookies are used on ByteSpace</p>
+                                    <h3 className="font-clash font-bold text-base sm:text-lg text-zinc-900 leading-tight">Cookie Preference Center</h3>
+                                    <p className="text-[11px] sm:text-xs text-zinc-500">Manage how cookies are used on ByteSpace</p>
                                 </div>
                             </div>
-                            <button type="button" onClick={() => setIsOpen(false)} className="p-2 text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer" aria-label="Close">
+                            <button type="button" onClick={() => setIsOpen(false)} className="p-2 text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 rounded-full transition-colors cursor-pointer shrink-0" aria-label="Close">
                                 <X className="w-5 h-5" />
                             </button>
                         </div>
 
                         {/* Modal Body */}
-                        <div className="p-6 overflow-y-auto space-y-5 flex-1">
-                            <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-200 text-xs text-zinc-600 leading-relaxed flex items-start gap-2.5">
+                        <div className="p-4 sm:p-6 overflow-y-auto space-y-4 sm:space-y-5 flex-1">
+                            <div className="p-3.5 sm:p-4 bg-zinc-50 rounded-xl border border-zinc-200 text-xs text-zinc-600 leading-relaxed flex items-start gap-2.5">
                                 <Info className="w-4 h-4 text-zinc-500 shrink-0 mt-0.5" />
                                 <p>When you visit ByteSpace, we store and retrieve information on your browser using cookies. You can choose not to allow some types of cookies, but blocking them may impact your site experience.</p>
                             </div>
 
                             {/* Cookie Category Cards */}
-                            <div className="space-y-4">
+                            <div className="space-y-3 sm:space-y-4">
                                 {/* Essential */}
-                                <div className="p-4 rounded-xl border border-zinc-200 bg-zinc-50/70 flex items-start justify-between gap-4">
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50/70 flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                                     <div className="space-y-1">
-                                        <div className="flex items-center gap-2">
+                                        <div className="flex flex-wrap items-center gap-2">
                                             <h5 className="font-bold text-sm text-zinc-900">Strictly Necessary Cookies</h5>
-                                            <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-zinc-200 text-zinc-700 flex items-center gap-1">
+                                            <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-zinc-200 text-zinc-700 inline-flex items-center gap-1">
                                                 <Lock className="w-3 h-3" /> Always Active
                                             </span>
                                         </div>
                                         <p className="text-xs text-zinc-600 leading-normal">These cookies are essential for the website to function, enabling security, account authentication, and core platform operations. They cannot be disabled.</p>
                                     </div>
-                                    <div className="relative inline-flex items-center cursor-not-allowed opacity-60">
+                                    <div className="relative inline-flex items-center cursor-not-allowed opacity-60 shrink-0 self-start sm:self-auto">
                                         <div className="w-11 h-6 bg-zinc-900 rounded-full"></div>
                                         <div className="absolute right-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
                                     </div>
                                 </div>
 
                                 {/* Analytics */}
-                                <div className="p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex items-start justify-between gap-4">
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex flex-row items-start justify-between gap-3 sm:gap-4">
                                     <div className="space-y-1">
                                         <h5 className="font-bold text-sm text-zinc-900">Performance & Analytics Cookies</h5>
                                         <p className="text-xs text-zinc-600 leading-normal">Help us understand how visitors interact with our courses and pages by collecting anonymous aggregate usage data, enabling continuous performance improvements.</p>
                                     </div>
-                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
                                         <input type="checkbox" checked={preferences.analytics} onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })} className="sr-only peer" />
                                         <div className="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-zinc-900"></div>
                                     </label>
                                 </div>
 
                                 {/* Functional */}
-                                <div className="p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex items-start justify-between gap-4">
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex flex-row items-start justify-between gap-3 sm:gap-4">
                                     <div className="space-y-1">
                                         <h5 className="font-bold text-sm text-zinc-900">Functional Cookies</h5>
                                         <p className="text-xs text-zinc-600 leading-normal">Enable enhanced functionality and personalization, such as remembering your course progress, video playback settings, and interface preferences.</p>
                                     </div>
-                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
                                         <input type="checkbox" checked={preferences.functional} onChange={(e) => setPreferences({ ...preferences, functional: e.target.checked })} className="sr-only peer" />
                                         <div className="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-zinc-900"></div>
                                     </label>
                                 </div>
 
                                 {/* Marketing */}
-                                <div className="p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex items-start justify-between gap-4">
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex flex-row items-start justify-between gap-3 sm:gap-4">
                                     <div className="space-y-1">
                                         <h5 className="font-bold text-sm text-zinc-900">Marketing & Targeting Cookies</h5>
                                         <p className="text-xs text-zinc-600 leading-normal">Used to deliver relevant recommendations and advertisements tailored to your learning interests across our partner network.</p>
                                     </div>
-                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
                                         <input type="checkbox" checked={preferences.marketing} onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })} className="sr-only peer" />
                                         <div className="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-zinc-900"></div>
                                     </label>
@@ -220,15 +225,15 @@ export default function CookieConsentManager() {
                         </div>
 
                         {/* Modal Footer */}
-                        <div className="px-6 py-4 border-t border-zinc-100 bg-zinc-50/50 flex flex-col sm:flex-row items-center justify-between gap-3">
-                            <button type="button" onClick={handleRejectNonEssential} className="w-full sm:w-auto px-4 py-2.5 rounded-full text-xs font-medium text-zinc-700 hover:bg-zinc-200/60 transition-colors cursor-pointer text-center">
+                        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-t border-zinc-100 bg-zinc-50/50 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
+                            <button type="button" onClick={handleRejectNonEssential} className="w-full sm:w-auto px-4 py-2.5 rounded-full text-xs font-medium text-zinc-700 hover:bg-zinc-200/60 transition-colors cursor-pointer text-center border border-zinc-200 sm:border-transparent">
                                 Reject Non-Essential
                             </button>
-                            <div className="flex items-center gap-2.5 w-full sm:w-auto">
-                                <button type="button" onClick={handleAcceptAll} className="flex-1 sm:flex-none px-4 py-2.5 rounded-full text-xs font-medium border border-zinc-300 text-zinc-800 hover:bg-zinc-100 transition-colors cursor-pointer">
+                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
+                                <button type="button" onClick={handleAcceptAll} className="w-full sm:w-auto px-4 py-2.5 rounded-full text-xs font-medium border border-zinc-300 text-zinc-800 hover:bg-zinc-100 transition-colors cursor-pointer text-center">
                                     Accept All
                                 </button>
-                                <button type="button" onClick={() => savePreferences(preferences)} className="flex-1 sm:flex-none px-5 py-2.5 rounded-full text-xs font-semibold bg-[#D4FB20] text-black hover:bg-[#c3ea1a] transition-all cursor-pointer shadow-sm">
+                                <button type="button" onClick={() => savePreferences(preferences)} className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-semibold bg-[#D4FB20] text-black hover:bg-[#c3ea1a] transition-all cursor-pointer shadow-sm text-center">
                                     Save Preferences
                                 </button>
                             </div>

@@ -4,7 +4,7 @@ import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, Star, BookOpen, Users, ArrowUpRight } from "lucide-react";
-import { Creator, creatorsData } from "@/data/creator";
+import { creatorsData } from "@/data/creator";
 
 export default function CreatorListView() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -21,13 +21,7 @@ export default function CreatorListView() {
 
         if (searchQuery.trim()) {
             const query = searchQuery.toLowerCase();
-            result = result.filter(
-                (creator) =>
-                    creator.name.toLowerCase().includes(query) ||
-                    creator.tagline.toLowerCase().includes(query) ||
-                    creator.bio.toLowerCase().includes(query) ||
-                    creator.category.toLowerCase().includes(query)
-            );
+            result = result.filter((creator) => creator.name.toLowerCase().includes(query) || creator.tagline.toLowerCase().includes(query) || creator.bio.toLowerCase().includes(query) || creator.category.toLowerCase().includes(query));
         }
 
         return result;
@@ -35,7 +29,7 @@ export default function CreatorListView() {
 
     return (
         <div className="w-full flex flex-col bg-white">
-            <section className="relative w-full bg-[#003BE2] pt-[130px] sm:pt-[150px] md:pt-[160px] pb-14 sm:pb-20 md:pb-24">
+            <section className="relative w-full bg-[#003BE2] pt-32.5 sm:pt-37.5 md:pt-40 pb-14 sm:pb-20 md:pb-24">
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
@@ -50,13 +44,9 @@ export default function CreatorListView() {
                         <span>Empowering Creators Worldwide</span>
                     </div>
 
-                    <h1 className="font-clash text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-tight">
-                        Meet Our World-Class Creators
-                    </h1>
+                    <h1 className="font-clash text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-tight">Meet Our World-Class Creators</h1>
 
-                    <p className="mt-3 sm:mt-4 text-white/85 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal">
-                        Learn directly from industry leaders, designers, developers, and visionaries shaping the digital future.
-                    </p>
+                    <p className="mt-3 sm:mt-4 text-white/85 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal">Learn directly from industry leaders, designers, developers, and visionaries shaping the digital future.</p>
 
                     <div className="mt-8 sm:mt-10 max-w-xl mx-auto relative">
                         <div className="relative flex items-center">
@@ -83,9 +73,7 @@ export default function CreatorListView() {
                                     key={pill}
                                     type="button"
                                     onClick={() => setActiveCategory(pill)}
-                                    className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm transition-all whitespace-nowrap cursor-pointer ${
-                                        isActive ? "bg-[#D4FB20] text-black font-semibold shadow-xs" : "bg-[#F4F4F6] text-zinc-700 hover:bg-zinc-200/80 font-medium"
-                                    }`}
+                                    className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm transition-all whitespace-nowrap cursor-pointer ${isActive ? "bg-[#D4FB20] text-black font-semibold shadow-xs" : "bg-[#F4F4F6] text-zinc-700 hover:bg-zinc-200/80 font-medium"}`}
                                 >
                                     {pill}
                                 </button>
@@ -95,10 +83,7 @@ export default function CreatorListView() {
 
                     <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         {filteredCreators.map((creator) => (
-                            <div
-                                key={creator.id}
-                                className="group w-full bg-white rounded-[32px] border border-zinc-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                            >
+                            <div key={creator.id} className="group w-full bg-white rounded-[32px] border border-zinc-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                                 <div>
                                     <div className="flex items-start gap-4">
                                         <div className="relative size-16 sm:size-20 rounded-2xl overflow-hidden bg-zinc-100 shrink-0 border border-zinc-200 shadow-xs">
@@ -107,14 +92,10 @@ export default function CreatorListView() {
 
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
-                                                <h3 className="font-clash font-bold text-lg sm:text-xl text-zinc-950 truncate group-hover:text-[#003BE2] transition-colors">
-                                                    {creator.name}
-                                                </h3>
+                                                <h3 className="font-clash font-bold text-lg sm:text-xl text-zinc-950 truncate group-hover:text-[#003BE2] transition-colors">{creator.name}</h3>
                                             </div>
 
-                                            <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-[#D4FB20]/30 text-zinc-900 text-[11px] font-semibold">
-                                                {creator.role}
-                                            </span>
+                                            <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-[#D4FB20]/30 text-zinc-900 text-[11px] font-semibold">{creator.role}</span>
 
                                             <p className="mt-1 text-xs text-zinc-500 font-medium truncate">{creator.tagline}</p>
                                         </div>
@@ -141,10 +122,7 @@ export default function CreatorListView() {
                                 </div>
 
                                 <div className="mt-6 pt-2">
-                                    <Link
-                                        href={`/creators/${creator.slug}`}
-                                        className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#D4FB20] hover:bg-[#c3ea1a] text-black font-semibold text-xs sm:text-sm transition-all active:scale-95 shadow-sm group-hover:shadow-md"
-                                    >
+                                    <Link href={`/creators/${creator.slug}`} className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#D4FB20] hover:bg-[#c3ea1a] text-black font-semibold text-xs sm:text-sm transition-all active:scale-95 shadow-sm group-hover:shadow-md">
                                         <span>View Profile</span>
                                         <ArrowUpRight className="size-4" />
                                     </Link>
