@@ -3,12 +3,13 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Star, BookOpen, Users, ArrowUpRight } from "lucide-react";
+import { Search, Star, BookOpen, Users, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { creatorsData } from "@/data/creator";
 
 export default function CreatorListView() {
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
+    const [currentPage, setCurrentPage] = useState(1);
 
     const categoryPills = ["All", "UI/UX Design", "Development", "Marketing", "Animation", "Social Media", "Drawing & Painting"];
 
@@ -26,6 +27,10 @@ export default function CreatorListView() {
 
         return result;
     }, [activeCategory, searchQuery]);
+
+    const itemsPerPage = 6;
+    const totalPages = Math.max(1, Math.ceil(filteredCreators.length / itemsPerPage));
+    const currentCreators = filteredCreators.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     return (
         <div className="w-full flex flex-col bg-white">
@@ -54,7 +59,10 @@ export default function CreatorListView() {
                             <input
                                 type="text"
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onChange={(e) => {
+                                    setSearchQuery(e.target.value);
+                                    setCurrentPage(1);
+                                }}
                                 placeholder="Search creators by name, skill, or discipline..."
                                 className="w-full h-12 sm:h-14 pl-12 pr-4 rounded-full bg-white text-zinc-900 placeholder:text-zinc-400 text-xs sm:text-sm font-medium shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4FB20]"
                             />
@@ -72,7 +80,10 @@ export default function CreatorListView() {
                                 <button
                                     key={pill}
                                     type="button"
-                                    onClick={() => setActiveCategory(pill)}
+                                    onClick={() => {
+                                        setActiveCategory(pill);
+                                        setCurrentPage(1);
+                                    }}
                                     className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm transition-all whitespace-nowrap cursor-pointer ${isActive ? "bg-[#D4FB20] text-black font-semibold shadow-xs" : "bg-[#F4F4F6] text-zinc-700 hover:bg-zinc-200/80 font-medium"}`}
                                 >
                                     {pill}
@@ -82,7 +93,7 @@ export default function CreatorListView() {
                     </div>
 
                     <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        {filteredCreators.map((creator) => (
+                        {currentCreators.map((creator) => (
                             <div key={creator.id} className="group w-full bg-white rounded-[32px] border border-zinc-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                                 <div>
                                     <div className="flex items-start gap-4">
@@ -139,10 +150,49 @@ export default function CreatorListView() {
                                 onClick={() => {
                                     setSearchQuery("");
                                     setActiveCategory("All");
+                                    setCurrentPage(1);
                                 }}
                                 className="mt-4 px-6 py-2.5 rounded-full bg-zinc-900 text-white text-xs sm:text-sm font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
                             >
                                 Clear filters
+                            </button>
+                        </div>
+                    )}
+
+                    {totalPages > 1 && (
+                        <div className="mt-14 sm:mt-16 flex items-center justify-center gap-2">
+                            <button
+                                type="button"
+                                disabled={currentPage === 1}
+                                onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                                aria-label="Previous Page"
+                                className="size-10 sm:size-11 rounded-full border border-zinc-200 bg-white flex items-center justify-center text-zinc-700 hover:bg-zinc-50 active:scale-95 transition-all disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+                            >
+                                <ChevronLeft className="size-4" />
+                            </button>
+
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                                const isCurrent = page === currentPage;
+                                return (
+                                    <button
+                                        key={page}
+                                        type="button"
+                                        onClick={() => setCurrentPage(page)}
+                                        className={`size-10 sm:size-11 rounded-full text-sm font-semibold transition-all cursor-pointer ${isCurrent ? "bg-[#D4FB20] text-black shadow-xs" : "border border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 active:scale-95"}`}
+                                    >
+                                        {page}
+                                    </button>
+                                );
+                            })}
+
+                            <button
+                                type="button"
+                                disabled={currentPage === totalPages}
+                                onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+                                aria-label="Next Page"
+                                className="size-10 sm:size-11 rounded-full border border-zinc-200 bg-white flex items-center justify-center text-zinc-700 hover:bg-zinc-50 active:scale-95 transition-all disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+                            >
+                                <ChevronRight className="size-4" />
                             </button>
                         </div>
                     )}

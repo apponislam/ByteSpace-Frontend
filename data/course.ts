@@ -430,7 +430,7 @@ export const coursesData: Course[] = [
         id: "15",
         title: "Modern Piano & Keyboard Improvisation",
         slug: "modern-piano-keyboard-improvisation",
-        image: "https://images.unsplash.com/photo-1520523839898-507125cd53c1?auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
         category: "Music",
         author: {
             name: "Julian Woods",
