@@ -63,7 +63,7 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
 
     return (
         <div className="w-full flex flex-col bg-white">
-            <section className="relative w-full bg-[#003BE2] pt-[130px] sm:pt-[150px] md:pt-[160px] pb-12 sm:pb-16 md:pb-20">
+            <section className="relative w-full bg-[#003BE2] pt-32.5 sm:pt-37.5 md:pt-40 pb-12 sm:pb-16 md:pb-20">
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{

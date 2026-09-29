@@ -17,10 +17,10 @@ export default function GrowthSection() {
 
     return (
         <section className="relative w-full overflow-hidden bg-white py-20 sm:py-24 lg:py-32">
-            <div className="absolute top-0 left-[-10%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-[#D4FB20]/15 blur-[120px] pointer-events-none select-none" />
+            <div className="absolute top-0 left-[-10%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
             <div className="absolute top-[20%] right-[-5%] w-[40vw] h-[40vw] max-w-[550px] max-h-[550px] rounded-full bg-[#0052FE]/10 blur-[130px] pointer-events-none select-none" />
-            <div className="absolute bottom-[15%] left-[-8%] w-[45vw] h-[45vw] max-w-[550px] max-h-[550px] rounded-full bg-[#D4FB20]/15 blur-[120px] pointer-events-none select-none" />
-            <div className="absolute bottom-[-5%] right-[-10%] w-[50vw] h-[50vw] max-w-[650px] max-h-[650px] rounded-full bg-[#8B5CF6]/10 blur-[140px] pointer-events-none select-none" />
+            <div className="absolute bottom-[15%] left-[-8%] w-[45vw] h-[45vw] max-w-[550px] max-h-[550px] rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
+            <div className="absolute bottom-[-5%] right-[-10%] w-[50vw] h-[50vw] max-w-[650px] max-h-[650px] rounded-full bg-[#8B5CF6]/10 blur-35 pointer-events-none select-none" />
 
             <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col gap-24 sm:gap-32 lg:gap-40">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
@@ -31,7 +31,9 @@ export default function GrowthSection() {
                             Growth Starts Here!
                         </h2>
 
-                        <p className="mt-5 sm:mt-6 text-[#64748B] text-base sm:text-lg leading-relaxed max-w-xl font-normal">Explore our curated selection of courses tailored to enhance your capabilities and accelerate your career journey. Whether you are looking to sharpen specific skills, gain industry expertise, or embark on a new career path entirely, we have the resources you need.</p>
+                        <p className="mt-5 sm:mt-6 text-[#64748B] text-base sm:text-lg leading-relaxed max-w-xl font-normal">
+                            Explore our curated selection of courses tailored to enhance your capabilities and accelerate your career journey. Whether you are looking to sharpen specific skills, gain industry expertise, or embark on a new career path entirely, we have the resources you need.
+                        </p>
 
                         <div className="flex items-center gap-8 sm:gap-12 mt-8 sm:mt-10">
                             <div>
@@ -84,7 +86,7 @@ export default function GrowthSection() {
                             <Image src="/home/growth/person2.svg" alt="Creator with tablet" width={579} height={719} priority className="w-full h-auto object-contain" />
                         </div>
 
-                        <div className="absolute top-[8%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-[150px] sm:w-[170px]">
+                        <div className="absolute top-[8%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-[170px]">
                             <div className="text-[11px] sm:text-xs text-white/90 font-medium">Total Revenue</div>
                             <div className="text-[9px] text-white/60 font-normal">July 1-28</div>
                             <div className="text-lg sm:text-xl font-bold text-white mt-1">$120.29</div>
@@ -93,7 +95,7 @@ export default function GrowthSection() {
                             </div>
                         </div>
 
-                        <div className="absolute top-[32%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-[150px] sm:w-[170px]">
+                        <div className="absolute top-[32%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-[170px]">
                             <div className="text-[11px] sm:text-xs text-white/90 font-medium">Year to Date</div>
                             <div className="text-[9px] text-white/60 font-normal">2023</div>
                             <div className="text-lg sm:text-xl font-bold text-white mt-1">$1,200.38</div>
