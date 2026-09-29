@@ -273,11 +273,29 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                         </div>
                     </div>
 
-                    <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        {filteredCourses.map((course) => (
-                            <CourseCard key={course.id} {...course} />
-                        ))}
-                    </div>
+                    {filteredCourses.length > 0 ? (
+                        <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                            {filteredCourses.map((course) => (
+                                <CourseCard key={course.id} {...course} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="mt-10 sm:mt-12 py-16 text-center flex flex-col items-center justify-center bg-zinc-50 rounded-2xl border border-dashed border-zinc-200">
+                            <p className="text-zinc-800 font-semibold text-lg">No courses found matching selected filters</p>
+                            <p className="text-zinc-500 text-sm mt-1">Try selecting a different category or level, or clear your filters.</p>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setSelectedLevel("All");
+                                    setSelectedCategory("All");
+                                    setSelectedSort("Most relevant");
+                                }}
+                                className="mt-4 px-5 py-2 rounded-full bg-zinc-900 text-white text-xs sm:text-sm font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
+                            >
+                                Clear filters
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
         </div>

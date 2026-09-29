@@ -20,22 +20,22 @@ export default function LessonsTab({ onPlayVideo }: LessonsTabProps) {
             videoUrl: "https://media.w3.org/2010/05/sintel/trailer.mp4",
         },
         {
-            title: "Module 4: User-Centric Design Strategies",
+            title: "Module 3: User-Centric Design Strategies",
             desc: "Understand 'Design Thinking in Digital Creation' and delve into 'User Experience (UX) Essentials.' Craft digital assets with a focus on user-centric design.",
             videoUrl: "https://media.w3.org/2010/05/bunny/trailer.mp4",
         },
         {
-            title: "Module 5: Interactive Media and Engagement",
+            title: "Module 4: Interactive Media and Engagement",
             desc: "Engage your audience with lessons like 'Creating Interactive Presentations' and 'Integrating Multimedia Elements.' Master the art of creating immersive digital experiences.",
             videoUrl: "https://media.w3.org/2010/05/bunny/movie.mp4",
         },
         {
-            title: "Module 6: Project Showcase and Critique",
+            title: "Module 5: Project Showcase and Critique",
             desc: "Perfect your presentation skills with 'Effective Presentation Techniques' and embrace collaboration with 'Peer Critique and Collaboration.' Showcase your work with confidence.",
             videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
         },
         {
-            title: "Module 7: Optimizing Digital Assets for Various Platforms",
+            title: "Module 6: Optimizing Digital Assets for Various Platforms",
             desc: "Adapt your digital creations for 'Mobile Platforms' and optimize for 'Social Media.' Ensure widespread accessibility and engagement across diverse digital landscapes.",
             videoUrl: "https://media.w3.org/2010/05/sintel/trailer.mp4",
         },
