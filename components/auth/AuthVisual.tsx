@@ -21,13 +21,13 @@ export default function AuthVisual({ title, subtitle }: AuthVisualProps) {
     ];
 
     return (
-        <div className="flex flex-col justify-center w-full max-w-[552px] py-2">
+        <div className="flex flex-col justify-center w-full max-w-138 py-2">
             <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{title}</h2>
                 <p className="mt-3 text-white/80 text-sm sm:text-base leading-relaxed max-w-md font-normal">{subtitle}</p>
             </div>
 
-            <div className="relative w-full max-w-[552px] aspect-[552/585] mt-6 sm:mt-10 select-none">
+            <div className="relative w-full max-w-138 aspect-552/585 mt-6 sm:mt-10 select-none">
                 <div className="absolute left-[5.0%] top-[15.2%] w-[67.4%] z-10 pointer-events-none drop-shadow-xl">
                     <Image src="/auth/authbackcard.svg" alt="Build Digital Product Card" width={372} height={383} priority className="w-full h-auto object-contain" />
                 </div>

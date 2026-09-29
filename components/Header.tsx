@@ -57,7 +57,7 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out ${scrolled || mobileMenuOpen ? "bg-[#0047FF]/85 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(0,15,80,0.3)] border-b border-white/15 h-16 sm:h-20 md:h-[88px]" : "bg-transparent border-b border-transparent h-20 sm:h-24 md:h-30"}`}
+            className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out ${scrolled || mobileMenuOpen ? "bg-[#0047FF]/85 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(0,15,80,0.3)] border-b border-white/15 h-16 sm:h-20 md:h-22" : "bg-transparent border-b border-transparent h-20 sm:h-24 md:h-30"}`}
         >
             <div className="container mx-auto h-full px-4 sm:px-6 flex items-center justify-between relative">
                 <Link href="/" className="group flex items-center gap-2.5 sm:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-lg py-1 transition-transform duration-200 active:scale-95" onClick={() => setMobileMenuOpen(false)}>

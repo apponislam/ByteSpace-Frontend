@@ -25,7 +25,7 @@ export default function HeroArea() {
                 }}
             />
 
-            <div className="absolute -left-10 lg:left-0 top-[20%] w-40 sm:w-55 lg:w-[267px] pointer-events-none select-none z-10">
+            <div className="absolute -left-10 lg:left-0 top-[20%] w-40 sm:w-55 lg:w-66.75 pointer-events-none select-none z-10">
                 <Image src="/home/Hero/left1.png" alt="Decorative Shape" width={267} height={387} priority className="w-full h-auto" />
             </div>
 
@@ -33,11 +33,11 @@ export default function HeroArea() {
                 <Image src="/home/Hero/left2.png" alt="Decorative Shape" width={177} height={176} priority className="w-full h-auto" />
             </div>
 
-            <div className="absolute -left-12 sm:-left-6 lg:left-0 bottom-0 w-[200px] sm:w-70 lg:w-[346px] pointer-events-none select-none z-10">
+            <div className="absolute -left-12 sm:-left-6 lg:left-0 bottom-0 w-50 sm:w-70 lg:w-86.5 pointer-events-none select-none z-10">
                 <Image src="/home/Hero/left3.svg" alt="Decorative Shape" width={346} height={343} priority className="w-full h-auto" />
             </div>
 
-            <div className="absolute -right-8 lg:right-0 top-[18%] w-[130px] sm:w-[180px] lg:w-[213px] pointer-events-none select-none z-10">
+            <div className="absolute -right-8 lg:right-0 top-[18%] w-32.5 sm:w-45 lg:w-53.25 pointer-events-none select-none z-10">
                 <Image src="/home/Hero/right1.svg" alt="Decorative Shape" width={213} height={372} priority className="w-full h-auto" />
             </div>
 
@@ -45,7 +45,7 @@ export default function HeroArea() {
                 <Image src="/home/Hero/right2.svg" alt="Decorative Shape" width={190} height={189} priority className="w-full h-auto" />
             </div>
 
-            <div className="absolute -right-10 lg:right-0 bottom-4 w-[180px] sm:w-[250px] lg:w-[317px] pointer-events-none select-none z-10">
+            <div className="absolute -right-10 lg:right-0 bottom-4 w-45 sm:w-62.5 lg:w-79.25 pointer-events-none select-none z-10">
                 <Image src="/home/Hero/right3.png" alt="Decorative Shape" width={317} height={332} priority className="w-full h-auto" />
             </div>
 
@@ -61,7 +61,7 @@ export default function HeroArea() {
                 <div className="mt-8 sm:mt-10 w-full max-w-xl">
                     <form onSubmit={(e) => e.preventDefault()} className="flex items-center gap-3 bg-white/0 p-1">
                         <div className="relative flex-1">
-                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 size-5 text-zinc-400 stroke-[2]" />
+                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 size-5 text-zinc-400 stroke-2" />
                             <input type="text" placeholder="Course, topic, creator" className="w-full h-14 pl-13 pr-6 rounded-full bg-white text-zinc-900 placeholder:text-zinc-400 text-sm sm:text-base font-normal shadow-lg shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-[#D4FB20]" />
                         </div>
                         <button type="submit" className="h-14 px-8 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md shadow-black/10 shrink-0 cursor-pointer">
@@ -70,12 +70,12 @@ export default function HeroArea() {
                     </form>
                 </div>
 
-                <div className="relative w-full max-w-4xl mt-12 sm:mt-16 flex justify-center items-end min-h-[460px] sm:min-h-[520px] lg:min-h-[580px]">
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[550px] sm:w-[800px] lg:w-[1000px] pointer-events-none select-none -z-0">
+                <div className="relative w-full max-w-4xl mt-12 sm:mt-16 flex justify-center items-end min-h-115 sm:min-h-130 lg:min-h-145">
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-137.5 sm:w-200 lg:w-250 pointer-events-none select-none z-0">
                         <Image src="/home/Hero/centerbackshpae.svg" alt="Center Back Halo" width={1149} height={442} priority className="w-full h-auto object-contain" />
                     </div>
 
-                    <div className="relative z-10 w-[380px] sm:w-135 lg:w-180.5 flex justify-center pointer-events-none select-none">
+                    <div className="relative z-10 w-95 sm:w-135 lg:w-180.5 flex justify-center pointer-events-none select-none">
                         <Image src="/home/Hero/centerman.svg" alt="ByteSpace Student" width={722} height={515} priority className="w-full h-auto object-contain drop-shadow-2xl" />
                     </div>
 
@@ -84,7 +84,7 @@ export default function HeroArea() {
                         <p className="text-[10px] sm:text-xs text-zinc-500 font-medium mt-0.5">200 Courses &bull; 1000+ Students</p>
                     </div>
 
-                    <div className="absolute top-[22%] sm:top-[24%] right-2 sm:right-8 lg:right-12 z-20 bg-white rounded-2xl p-4 sm:p-5 shadow-xl w-[180px] sm:w-52.5 animate-in fade-in duration-300">
+                    <div className="absolute top-[22%] sm:top-[24%] right-2 sm:right-8 lg:right-12 z-20 bg-white rounded-2xl p-4 sm:p-5 shadow-xl w-45 sm:w-52.5 animate-in fade-in duration-300">
                         <span className="text-[11px] sm:text-xs font-semibold text-zinc-500">Learning Progress</span>
                         <div className="text-2xl sm:text-3xl font-extrabold text-zinc-900 mt-1">55%</div>
                         <div className="w-full bg-zinc-100 rounded-full h-2 mt-2.5 overflow-hidden">

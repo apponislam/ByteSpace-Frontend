@@ -74,7 +74,7 @@ export default function AboutTab() {
           {sneakPeakImages.map((item, index) => (
             <div
               key={index}
-              className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60"
+              className="relative aspect-4/3 rounded-2xl overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60"
             >
               <Image
                 src={item.url}

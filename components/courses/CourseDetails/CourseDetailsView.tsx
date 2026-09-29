@@ -129,7 +129,7 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
                     backgroundSize: "120px 120px",
                 }}
             >
-                {!videoBottom && <div className="w-full h-[720px] sm:h-[800px] md:h-[880px] lg:h-[940px]" />}
+                {!videoBottom && <div className="w-full h-180 sm:h-200 md:h-220 lg:h-235" />}
             </div>
 
             <div className="relative z-10 w-full pt-32.5 sm:pt-37.5 md:pt-40 pb-16 sm:pb-24">
@@ -243,7 +243,7 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
 
                     <div className="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                         <div className="lg:col-span-8 flex flex-col">
-                            <div ref={videoRef} className="relative w-full aspect-[16/10] rounded-[28px] sm:rounded-[36px] overflow-hidden bg-zinc-900 shadow-2xl border-4 border-white group">
+                            <div ref={videoRef} className="relative w-full aspect-16/10 rounded-[28px] sm:rounded-[36px] overflow-hidden bg-zinc-900 shadow-2xl border-4 border-white group">
                                 <Image
                                     src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
                                     alt="Course Video Preview"

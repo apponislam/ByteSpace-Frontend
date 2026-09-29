@@ -21,23 +21,28 @@ const DEFAULT_PREFERENCES: CookiePreferences = {
 export default function CookieConsentManager() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [showBanner, setShowBanner] = useState<boolean>(false);
-    const [preferences, setPreferences] = useState<CookiePreferences>(DEFAULT_PREFERENCES);
+    const [preferences, setPreferences] = useState<CookiePreferences>(() => {
+        if (typeof window !== "undefined") {
+            try {
+                const stored = localStorage.getItem("bytespace_cookie_preferences");
+                if (stored) return JSON.parse(stored);
+            } catch {}
+        }
+        return DEFAULT_PREFERENCES;
+    });
     const [toastMessage, setToastMessage] = useState<string | null>(null);
 
     useEffect(() => {
-        // Check stored preferences
+        // Check stored preferences for banner visibility
         try {
             const stored = localStorage.getItem("bytespace_cookie_preferences");
-            if (stored) {
-                setPreferences(JSON.parse(stored));
-                setShowBanner(false);
-            } else {
-                // Show banner after short delay for optimal UX
+            if (!stored) {
                 const timer = setTimeout(() => setShowBanner(true), 1000);
                 return () => clearTimeout(timer);
             }
         } catch {
-            setShowBanner(true);
+            const timer = setTimeout(() => setShowBanner(true), 1000);
+            return () => clearTimeout(timer);
         }
     }, []);
 

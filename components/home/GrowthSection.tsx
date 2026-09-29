@@ -17,10 +17,10 @@ export default function GrowthSection() {
 
     return (
         <section className="relative w-full overflow-hidden bg-white py-20 sm:py-24 lg:py-32">
-            <div className="absolute top-0 left-[-10%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
-            <div className="absolute top-[20%] right-[-5%] w-[40vw] h-[40vw] max-w-[550px] max-h-[550px] rounded-full bg-[#0052FE]/10 blur-[130px] pointer-events-none select-none" />
-            <div className="absolute bottom-[15%] left-[-8%] w-[45vw] h-[45vw] max-w-[550px] max-h-[550px] rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
-            <div className="absolute bottom-[-5%] right-[-10%] w-[50vw] h-[50vw] max-w-[650px] max-h-[650px] rounded-full bg-[#8B5CF6]/10 blur-35 pointer-events-none select-none" />
+            <div className="absolute top-0 left-[-10%] w-[45vw] h-[45vw] max-w-150 max-h-150 rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
+            <div className="absolute top-[20%] right-[-5%] w-[40vw] h-[40vw] max-w-137.5 max-h-137.5 rounded-full bg-[#0052FE]/10 blur-[130px] pointer-events-none select-none" />
+            <div className="absolute bottom-[15%] left-[-8%] w-[45vw] h-[45vw] max-w-137.5 max-h-137.5 rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
+            <div className="absolute bottom-[-5%] right-[-10%] w-[50vw] h-[50vw] max-w-162.5 max-h-162.5 rounded-full bg-[#8B5CF6]/10 blur-35 pointer-events-none select-none" />
 
             <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col gap-24 sm:gap-32 lg:gap-40">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
@@ -53,7 +53,7 @@ export default function GrowthSection() {
                         </div>
                     </div>
 
-                    <div className="relative w-full max-w-[560px] mx-auto min-h-[420px] sm:min-h-[500px] flex items-center justify-center">
+                    <div className="relative w-full max-w-140 mx-auto min-h-105 sm:min-h-125 flex items-center justify-center">
                         <div className="absolute top-0 left-0 w-[58%] sm:w-[62%] z-10 pointer-events-none select-none drop-shadow-xl">
                             <Image src="/home/growth/peson1back.svg" alt="Course Card" width={373} height={384} priority className="w-full h-auto object-contain" />
                         </div>
@@ -66,7 +66,7 @@ export default function GrowthSection() {
                             <Image src="/home/growth/person1.svg" alt="Student with laptop" width={703} height={688} priority className="w-full h-auto object-contain" />
                         </div>
 
-                        <div className="absolute top-[42%] right-[-10px] sm:right-[-15px] z-30 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-2xl border border-white/80 w-[170px] sm:w-[200px]">
+                        <div className="absolute top-[42%] -right-2.5 sm:-right-3.75 z-30 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-2xl border border-white/80 w-42.5 sm:w-50">
                             <span className="text-[11px] sm:text-xs font-semibold text-zinc-500">Learning Progress</span>
                             <div className="text-2xl sm:text-3xl font-extrabold text-zinc-900 mt-1">55%</div>
                             <div className="w-full bg-zinc-100 rounded-full h-2 mt-2.5 overflow-hidden">
@@ -77,7 +77,7 @@ export default function GrowthSection() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
-                    <div className="order-2 lg:order-1 relative w-full max-w-[560px] mx-auto min-h-[440px] sm:min-h-[520px] flex items-center justify-center">
+                    <div className="order-2 lg:order-1 relative w-full max-w-140 mx-auto min-h-110 sm:min-h-130 flex items-center justify-center">
                         <div className="absolute top-[28%] right-2 sm:right-6 w-[28%] sm:w-[32%] z-0 pointer-events-none select-none">
                             <Image src="/home/growth/person2icon1.svg" alt="Shape" width={217} height={216} priority className="w-full h-auto object-contain" />
                         </div>
@@ -86,7 +86,7 @@ export default function GrowthSection() {
                             <Image src="/home/growth/person2.svg" alt="Creator with tablet" width={579} height={719} priority className="w-full h-auto object-contain" />
                         </div>
 
-                        <div className="absolute top-[8%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-[170px]">
+                        <div className="absolute top-[8%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-42.5">
                             <div className="text-[11px] sm:text-xs text-white/90 font-medium">Total Revenue</div>
                             <div className="text-[9px] text-white/60 font-normal">July 1-28</div>
                             <div className="text-lg sm:text-xl font-bold text-white mt-1">$120.29</div>
@@ -95,7 +95,7 @@ export default function GrowthSection() {
                             </div>
                         </div>
 
-                        <div className="absolute top-[32%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-[170px]">
+                        <div className="absolute top-[32%] left-[2%] sm:left-[4%] z-20 bg-[#0052FE] text-white rounded-2xl p-3.5 sm:p-4 shadow-xl border border-blue-400/30 w-37.5 sm:w-42.5">
                             <div className="text-[11px] sm:text-xs text-white/90 font-medium">Year to Date</div>
                             <div className="text-[9px] text-white/60 font-normal">2023</div>
                             <div className="text-lg sm:text-xl font-bold text-white mt-1">$1,200.38</div>
@@ -139,7 +139,7 @@ export default function GrowthSection() {
                             {creatorFeatures.map((feature, idx) => (
                                 <li key={idx} className="flex items-center gap-3.5 text-base sm:text-lg font-medium text-[#0F172A]">
                                     <div className="size-5 sm:size-6 rounded-full bg-[#0052FE] flex items-center justify-center shrink-0 text-white shadow-sm">
-                                        <Check className="size-3.5 sm:size-4 stroke-[3]" />
+                                        <Check className="size-3.5 sm:size-4 stroke-3" />
                                     </div>
                                     <span>{feature}</span>
                                 </li>

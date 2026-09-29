@@ -4,7 +4,7 @@ import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, Star, BookOpen, Users, ArrowUpRight } from "lucide-react";
-import { Creator, creatorsData } from "@/data/creator";
+import { creatorsData } from "@/data/creator";
 
 export default function CreatorListView() {
     const [searchQuery, setSearchQuery] = useState("");
