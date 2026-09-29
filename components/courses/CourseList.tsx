@@ -119,11 +119,11 @@ export default function CourseList({ searchQuery = "", heroCategory = "Courses" 
                                     setIsLevelOpen(!isLevelOpen);
                                     setIsSortOpen(false);
                                 }}
-                                className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer ${selectedLevel !== "All" ? "ring-2 ring-[#003BE2]/20 border-[#003BE2]" : ""}`}
+                                className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer whitespace-nowrap ${selectedLevel !== "All" ? "ring-2 ring-[#003BE2]/20 border-[#003BE2]" : ""}`}
                             >
-                                <BarChart2 className="size-4 text-zinc-700" />
-                                <span>{selectedLevel === "All" ? "Level" : selectedLevel}</span>
-                                <ChevronDown className={`size-3.5 text-zinc-500 transition-transform duration-200 ${isLevelOpen ? "rotate-180" : ""}`} />
+                                <BarChart2 className="size-4 text-zinc-700 shrink-0" />
+                                <span className="whitespace-nowrap">{selectedLevel === "All" ? "Level" : selectedLevel}</span>
+                                <ChevronDown className={`size-3.5 text-zinc-500 shrink-0 transition-transform duration-200 ${isLevelOpen ? "rotate-180" : ""}`} />
                             </button>
 
                             {isLevelOpen && (
@@ -137,11 +137,11 @@ export default function CourseList({ searchQuery = "", heroCategory = "Courses" 
                                                 setIsLevelOpen(false);
                                                 setCurrentPage(1);
                                             }}
-                                            className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer flex items-center justify-between ${selectedLevel === level ? "bg-[#003BE2]/10 text-[#003BE2] font-semibold" : "text-zinc-700 hover:bg-zinc-100/80 hover:text-zinc-900"}`}
+                                            className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer flex items-center justify-between whitespace-nowrap ${selectedLevel === level ? "bg-[#003BE2]/10 text-[#003BE2] font-semibold" : "text-zinc-700 hover:bg-zinc-100/80 hover:text-zinc-900"}`}
                                         >
-                                            <span>{level}</span>
+                                            <span className="whitespace-nowrap">{level}</span>
                                             {selectedLevel === level && (
-                                                <span className="size-1.5 rounded-full bg-[#003BE2]" />
+                                                <span className="size-1.5 rounded-full bg-[#003BE2] shrink-0" />
                                             )}
                                         </button>
                                     ))}
@@ -154,10 +154,10 @@ export default function CourseList({ searchQuery = "", heroCategory = "Courses" 
                             onClick={() => {
                                 setShowCategoryPills((prev) => !prev);
                             }}
-                            className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer ${showCategoryPills ? "ring-2 ring-[#003BE2]/20 border-[#003BE2]" : ""}`}
+                            className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer whitespace-nowrap ${showCategoryPills ? "ring-2 ring-[#003BE2]/20 border-[#003BE2]" : ""}`}
                         >
-                            <Shapes className="size-4 text-zinc-700" />
-                            <span>Category</span>
+                            <Shapes className="size-4 text-zinc-700 shrink-0" />
+                            <span className="whitespace-nowrap">Category</span>
                         </button>
                     </div>
 
@@ -168,11 +168,11 @@ export default function CourseList({ searchQuery = "", heroCategory = "Courses" 
                                 setIsSortOpen(!isSortOpen);
                                 setIsLevelOpen(false);
                             }}
-                            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer"
+                            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer whitespace-nowrap"
                         >
-                            <ListFilter className="size-4 text-zinc-700" />
-                            <span>{selectedSort}</span>
-                            <ChevronDown className={`size-3.5 text-zinc-500 transition-transform duration-200 ${isSortOpen ? "rotate-180" : ""}`} />
+                            <ListFilter className="size-4 text-zinc-700 shrink-0" />
+                            <span className="whitespace-nowrap">{selectedSort}</span>
+                            <ChevronDown className={`size-3.5 text-zinc-500 shrink-0 transition-transform duration-200 ${isSortOpen ? "rotate-180" : ""}`} />
                         </button>
 
                         {isSortOpen && (

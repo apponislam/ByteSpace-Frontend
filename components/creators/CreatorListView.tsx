@@ -64,7 +64,7 @@ export default function CreatorListView() {
                                     setCurrentPage(1);
                                 }}
                                 placeholder="Search creators by name, skill, or discipline..."
-                                className="w-full h-12 sm:h-14 pl-12 pr-4 rounded-full bg-white text-zinc-900 placeholder:text-zinc-400 text-xs sm:text-sm font-medium shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4FB20]"
+                                className="w-full h-12 sm:h-14 pl-12 pr-4 rounded-full bg-white placeholder:text-zinc-400 text-xs sm:text-sm font-medium shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4FB20]"
                             />
                         </div>
                     </div>
