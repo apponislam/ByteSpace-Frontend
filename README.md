@@ -114,6 +114,10 @@ ByteSpace-Frontend/
 │   │   │   ├── page.tsx         # Creators directory (/creators)
 │   │   │   └── [slug]/          # Creator profile page (/creators/[slug])
 │   │   │       └── page.tsx
+│   │   ├── about/               # About Us (/about)
+│   │   │   └── page.tsx
+│   │   ├── help/                # Help Center & FAQ (/help)
+│   │   │   └── page.tsx
 │   │   ├── privacy-policy/      # Privacy Policy (/privacy-policy)
 │   │   │   └── page.tsx
 │   │   └── terms/               # Terms of Service (/terms)
