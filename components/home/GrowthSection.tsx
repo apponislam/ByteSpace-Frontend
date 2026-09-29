@@ -143,7 +143,7 @@ export default function GrowthSection() {
                             <div className="flex items-center mt-3">
                                 {studentAvatars.map((avatar, idx) => (
                                     <div key={idx} style={{ zIndex: idx + 1 }} className={`relative size-7 sm:size-8 rounded-full overflow-hidden ${idx > 0 ? "-ml-3 sm:-ml-3.5" : ""}`}>
-                                        <img src={avatar} alt="Student" className="w-full h-full object-cover" />
+                                        <Image src={avatar} alt="Student" fill sizes="32px" className="w-full h-full object-cover" />
                                     </div>
                                 ))}
                                 <div style={{ zIndex: 10 }} className="relative -ml-3 sm:-ml-3.5 size-7 sm:size-8 rounded-full bg-[#D4FB20] text-black text-[10px] sm:text-xs font-bold flex items-center justify-center shrink-0">

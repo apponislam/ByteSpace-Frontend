@@ -357,7 +357,7 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
                         </div>
 
                         <div className="lg:col-span-4 sticky top-24 sm:top-28">
-                            <CourseSidebar price={price} pricePeriod={pricePeriod} />
+                            <CourseSidebar course={course} price={price} pricePeriod={pricePeriod} />
                         </div>
                     </div>
                 </div>

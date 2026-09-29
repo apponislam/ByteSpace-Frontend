@@ -5,9 +5,32 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShoppingBag, Menu, X, ChevronRight } from "lucide-react";
 
+import CartSidebar from "@/components/CartSidebar";
+import { getStoredCart, CART_UPDATED_EVENT, OPEN_CART_EVENT } from "@/lib/cart";
+
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+    const [cartCount, setCartCount] = useState(0);
     const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const syncCount = () => {
+            setCartCount(getStoredCart().length);
+        };
+        syncCount();
+        window.addEventListener(CART_UPDATED_EVENT, syncCount);
+        window.addEventListener("storage", syncCount);
+
+        const handleOpenCart = () => setCartOpen(true);
+        window.addEventListener(OPEN_CART_EVENT, handleOpenCart);
+
+        return () => {
+            window.removeEventListener(CART_UPDATED_EVENT, syncCount);
+            window.removeEventListener("storage", syncCount);
+            window.removeEventListener(OPEN_CART_EVENT, handleOpenCart);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -88,15 +111,35 @@ export default function Header() {
                         Join Us
                     </Link>
 
-                    <Link href="/cart" aria-label="Shopping Cart" className="p-2 text-white/90 hover:text-white hover:bg-white/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-full">
+                    <button
+                        type="button"
+                        onClick={() => setCartOpen(true)}
+                        aria-label="Open Shopping Cart"
+                        className="relative p-2 text-white/90 hover:text-white hover:bg-white/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-full cursor-pointer"
+                    >
                         <ShoppingBag className="size-5 sm:size-6 stroke-[1.8]" />
-                    </Link>
+                        {cartCount > 0 && (
+                            <span className="absolute -top-0.5 -right-0.5 size-4.5 rounded-full bg-[#D4FB20] text-black text-[10px] font-bold flex items-center justify-center shadow-xs">
+                                {cartCount}
+                            </span>
+                        )}
+                    </button>
                 </div>
 
                 <div className="flex md:hidden items-center gap-1.5 sm:gap-2">
-                    <Link href="/cart" aria-label="Shopping Cart" className="p-2 text-white hover:bg-white/10 rounded-full transition-colors active:scale-95" onClick={() => setMobileMenuOpen(false)}>
+                    <button
+                        type="button"
+                        onClick={() => setCartOpen(true)}
+                        aria-label="Open Shopping Cart"
+                        className="relative p-2 text-white hover:bg-white/10 rounded-full transition-colors active:scale-95 cursor-pointer"
+                    >
                         <ShoppingBag className="size-5 stroke-[1.8]" />
-                    </Link>
+                        {cartCount > 0 && (
+                            <span className="absolute -top-0.5 -right-0.5 size-4 rounded-full bg-[#D4FB20] text-black text-[10px] font-bold flex items-center justify-center shadow-xs">
+                                {cartCount}
+                            </span>
+                        )}
+                    </button>
 
                     <button
                         type="button"
@@ -124,13 +167,25 @@ export default function Header() {
                             <ChevronRight className="size-4 text-white/50" />
                         </Link>
                     ))}
-                    <Link href="/cart" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white/90 hover:text-white transition-colors py-2.5 px-3.5 rounded-xl hover:bg-white/10 active:bg-white/15 flex items-center justify-between">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setMobileMenuOpen(false);
+                            setCartOpen(true);
+                        }}
+                        className="w-full text-base font-medium text-white/90 hover:text-white transition-colors py-2.5 px-3.5 rounded-xl hover:bg-white/10 active:bg-white/15 flex items-center justify-between cursor-pointer"
+                    >
                         <div className="flex items-center gap-2.5">
                             <ShoppingBag className="size-4 stroke-[1.8]" />
                             <span>Cart</span>
                         </div>
-                        <ChevronRight className="size-4 text-white/50" />
-                    </Link>
+                        <div className="flex items-center gap-2">
+                            {cartCount > 0 && (
+                                <span className="px-2 py-0.5 rounded-full bg-[#D4FB20] text-black text-xs font-bold">{cartCount}</span>
+                            )}
+                            <ChevronRight className="size-4 text-white/50" />
+                        </div>
+                    </button>
                 </nav>
 
                 <div className="h-px w-full bg-white/15 my-0.5" />
@@ -144,6 +199,9 @@ export default function Header() {
                     </Link>
                 </div>
             </div>
+
+            {/* Cart Sidebar Drawer */}
+            <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} />
         </header>
     );
 }

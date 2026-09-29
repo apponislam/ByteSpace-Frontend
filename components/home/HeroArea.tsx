@@ -26,27 +26,9 @@ export default function HeroArea() {
 
     const trimmed = query.trim().toLowerCase();
 
-    const matchedCourses = trimmed
-        ? coursesData
-              .filter(
-                  (c) =>
-                      c.title.toLowerCase().includes(trimmed) ||
-                      c.category.toLowerCase().includes(trimmed) ||
-                      c.author.name.toLowerCase().includes(trimmed)
-              )
-              .slice(0, 4)
-        : [];
+    const matchedCourses = trimmed ? coursesData.filter((c) => c.title.toLowerCase().includes(trimmed) || c.category.toLowerCase().includes(trimmed) || c.author.name.toLowerCase().includes(trimmed)).slice(0, 4) : [];
 
-    const matchedCreators = trimmed
-        ? creatorsData
-              .filter(
-                  (cr) =>
-                      cr.name.toLowerCase().includes(trimmed) ||
-                      cr.role.toLowerCase().includes(trimmed) ||
-                      cr.category.toLowerCase().includes(trimmed)
-              )
-              .slice(0, 3)
-        : [];
+    const matchedCreators = trimmed ? creatorsData.filter((cr) => cr.name.toLowerCase().includes(trimmed) || cr.role.toLowerCase().includes(trimmed) || cr.category.toLowerCase().includes(trimmed)).slice(0, 3) : [];
 
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -145,10 +127,7 @@ export default function HeroArea() {
                                 </button>
                             )}
                         </div>
-                        <button
-                            type="submit"
-                            className="h-14 px-8 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md shadow-black/10 shrink-0 cursor-pointer"
-                        >
+                        <button type="submit" className="h-14 px-8 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md shadow-black/10 shrink-0 cursor-pointer">
                             Search
                         </button>
                     </form>
@@ -159,11 +138,7 @@ export default function HeroArea() {
                             {matchedCourses.length === 0 && matchedCreators.length === 0 ? (
                                 <div className="p-6 text-center">
                                     <p className="text-sm font-medium text-zinc-600">No courses or creators matching &ldquo;{query}&rdquo;</p>
-                                    <Link
-                                        href="/courses"
-                                        onClick={() => setIsOpen(false)}
-                                        className="inline-flex items-center gap-1.5 mt-2 text-xs font-semibold text-[#0052FE] hover:underline"
-                                    >
+                                    <Link href="/courses" onClick={() => setIsOpen(false)} className="inline-flex items-center gap-1.5 mt-2 text-xs font-semibold text-[#0052FE] hover:underline">
                                         Browse all courses <ChevronRight className="size-3" />
                                     </Link>
                                 </div>
@@ -178,23 +153,12 @@ export default function HeroArea() {
                                             </div>
                                             <div className="space-y-0.5">
                                                 {matchedCourses.map((course) => (
-                                                    <Link
-                                                        key={course.id}
-                                                        href={`/courses/${course.slug}`}
-                                                        onClick={() => setIsOpen(false)}
-                                                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-50 transition-colors group"
-                                                    >
+                                                    <Link key={course.id} href={`/courses/${course.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-50 transition-colors group">
                                                         <div className="relative size-10 rounded-lg overflow-hidden shrink-0 bg-zinc-100">
-                                                            <img
-                                                                src={course.image}
-                                                                alt={course.title}
-                                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                                            />
+                                                            <Image src={course.image} alt={course.title} fill sizes="40px" className="object-cover group-hover:scale-105 transition-transform" />
                                                         </div>
                                                         <div className="flex-1 min-w-0">
-                                                            <h5 className="text-sm font-medium text-zinc-900 truncate group-hover:text-[#0052FE] transition-colors">
-                                                                {course.title}
-                                                            </h5>
+                                                            <h5 className="text-sm font-medium text-zinc-900 truncate group-hover:text-[#0052FE] transition-colors">{course.title}</h5>
                                                             <div className="flex items-center gap-2 text-xs text-zinc-500 mt-0.5">
                                                                 <span>{course.category}</span>
                                                                 <span>&bull;</span>
@@ -217,23 +181,12 @@ export default function HeroArea() {
                                             </div>
                                             <div className="space-y-0.5">
                                                 {matchedCreators.map((creator) => (
-                                                    <Link
-                                                        key={creator.id}
-                                                        href={`/creators/${creator.slug}`}
-                                                        onClick={() => setIsOpen(false)}
-                                                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-50 transition-colors group"
-                                                    >
+                                                    <Link key={creator.id} href={`/creators/${creator.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-50 transition-colors group">
                                                         <div className="relative size-10 rounded-full overflow-hidden shrink-0 bg-zinc-100 border border-zinc-200">
-                                                            <img
-                                                                src={creator.avatar}
-                                                                alt={creator.name}
-                                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                                            />
+                                                            <Image src={creator.avatar} alt={creator.name} fill sizes="40px" className="object-cover group-hover:scale-105 transition-transform" />
                                                         </div>
                                                         <div className="flex-1 min-w-0">
-                                                            <h5 className="text-sm font-medium text-zinc-900 truncate group-hover:text-[#0052FE] transition-colors">
-                                                                {creator.name}
-                                                            </h5>
+                                                            <h5 className="text-sm font-medium text-zinc-900 truncate group-hover:text-[#0052FE] transition-colors">{creator.name}</h5>
                                                             <div className="flex items-center gap-2 text-xs text-zinc-500 mt-0.5">
                                                                 <span>{creator.role}</span>
                                                                 <span>&bull;</span>
@@ -284,7 +237,7 @@ export default function HeroArea() {
                         <div className="flex items-center mt-2.5">
                             {studentAvatars.map((avatar, idx) => (
                                 <div key={idx} style={{ zIndex: idx + 1 }} className={`relative size-6 sm:size-7 rounded-full overflow-hidden shrink-0 ${idx > 0 ? "-ml-2" : ""}`}>
-                                    <img src={avatar} alt="Student" className="w-full h-full object-cover" />
+                                    <Image src={avatar} alt="Student" fill sizes="28px" className="object-cover" />
                                 </div>
                             ))}
                             <div style={{ zIndex: 10 }} className="relative -ml-2 size-6 sm:size-7 rounded-full bg-[#D4FB20] text-black text-[9px] sm:text-[10px] font-bold flex items-center justify-center shrink-0">

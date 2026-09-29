@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Video, Play } from "lucide-react";
+import { Video } from "lucide-react";
 
 interface LessonsTabProps {
     onPlayVideo?: (videoUrl?: string) => void;

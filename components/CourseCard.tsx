@@ -91,7 +91,7 @@ export default function CourseCard({
                         <div className="flex items-center">
                             {enrolledStudents.avatars.slice(0, 4).map((avatar, idx) => (
                                 <div key={idx} style={{ zIndex: idx + 1 }} className={`relative size-8 rounded-full overflow-hidden ${idx > 0 ? "-ml-3" : ""}`}>
-                                    <img src={avatar} alt="Student" className="w-full h-full object-cover" />
+                                    <Image src={avatar} alt="Student" fill sizes="32px" className="object-cover" />
                                 </div>
                             ))}
                             {enrolledStudents.count && (
