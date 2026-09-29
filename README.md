@@ -116,6 +116,10 @@ ByteSpace-Frontend/
 │   │   │       └── page.tsx
 │   │   ├── about/               # About Us (/about)
 │   │   │   └── page.tsx
+│   │   ├── affiliate/           # Affiliate Program (/affiliate)
+│   │   │   └── page.tsx
+│   │   ├── contact/             # Contact Us (/contact)
+│   │   │   └── page.tsx
 │   │   ├── help/                # Help Center & FAQ (/help)
 │   │   │   └── page.tsx
 │   │   ├── privacy-policy/      # Privacy Policy (/privacy-policy)

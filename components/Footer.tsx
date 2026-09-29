@@ -22,7 +22,7 @@ export default function Footer() {
     ];
 
     const column3 = [
-        { name: "Become a Creator", href: "/creators/apply" },
+        { name: "Become a Creator", href: "/register" },
         { name: "Affiliate Program", href: "/affiliate" },
         { name: "Contact", href: "/contact" },
         { name: "Help", href: "/help" },
@@ -31,7 +31,7 @@ export default function Footer() {
 
     return (
         <footer className="w-full bg-white pt-16 pb-12 font-satoshi font-normal">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 sm:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
                     <div className="flex flex-col lg:col-span-5 max-w-md">
                         <Link href="/" className="inline-flex items-center gap-3">
@@ -41,12 +41,12 @@ export default function Footer() {
 
                         <p className="mt-4 text-sm text-zinc-600 leading-relaxed font-normal">Stay Up to date with our latest features and releases by joining our newsletter.</p>
 
-                        <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 text-zinc-900">
                             <input
                                 type="email"
                                 placeholder="Enter your email"
                                 required
-                                className="w-full sm:w-[320px] px-5 py-3 rounded-full border border-zinc-300 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-colors font-normal"
+                                className="w-full sm:w-[320px] px-5 py-3 rounded-full border border-zinc-300 text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-colors font-normal"
                             />
                             <button type="submit" className="rounded-full bg-[#D4FB20] text-black font-normal px-8 py-3 text-sm hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-sm cursor-pointer">
                                 Subscribe

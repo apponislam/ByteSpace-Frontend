@@ -36,9 +36,9 @@ export default function AboutPage() {
             </section>
 
             {/* Mission & Story */}
-            <main className="container mx-auto px-4 sm:px-6 py-14 sm:py-20 max-w-5xl space-y-16">
-                <section className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center">
-                    <div>
+            <main className="container mx-auto px-4 sm:px-6 py-14 sm:py-20 space-y-16 sm:space-y-20">
+                <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                    <div className="lg:col-span-6">
                         <span className="text-xs sm:text-sm font-bold text-[#0052FE] uppercase tracking-wider">Who We Are</span>
                         <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-zinc-900 mt-2 leading-snug">
                             Bridging the gap between theory and industry craft.
@@ -51,7 +51,7 @@ export default function AboutPage() {
                         </p>
                     </div>
 
-                    <div className="bg-zinc-50 border border-zinc-200/80 rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-sm">
+                    <div className="lg:col-span-6 bg-zinc-50 border border-zinc-200/80 rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-sm">
                         <div className="space-y-6">
                             <div className="flex items-start gap-4">
                                 <div className="size-11 rounded-2xl bg-[#D4FB20] text-black flex items-center justify-center shrink-0 font-bold">
