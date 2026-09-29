@@ -131,8 +131,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
     return (
-        <html lang="en" className={`${poppins.className} ${poppins.variable} ${clashDisplay.variable} ${satoshi.variable} h-full antialiased`}>
-            <body className="min-h-full flex flex-col font-sans" cz-shortcut-listen="true">
+        <html lang="en" className={`${poppins.className} ${poppins.variable} ${clashDisplay.variable} ${satoshi.variable} h-full antialiased`} suppressHydrationWarning={true}>
+            <body className="min-h-full flex flex-col font-sans" cz-shortcut-listen="true" suppressHydrationWarning={true}>
                 {children}
             </body>
         </html>

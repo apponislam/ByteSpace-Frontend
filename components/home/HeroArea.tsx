@@ -90,8 +90,7 @@ export default function HeroArea() {
             <div className="container relative mx-auto px-4 z-20 flex flex-col items-center">
                 <h1 className="text-center font-bold tracking-tight text-white text-4xl sm:text-6xl md:text-7xl lg:text-[76px] leading-[1.08] max-w-4xl">
                     Get Access to Hundreds
-                    <br />
-                    Courses Available
+                    <br className="hidden md:block" /> Courses Available
                 </h1>
 
                 <p className="mt-5 sm:mt-6 text-center text-sm sm:text-base md:text-lg text-white/90 max-w-2xl font-normal leading-relaxed">Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.</p>
