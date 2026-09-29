@@ -34,7 +34,7 @@ export default function HeroArea() {
             </div>
 
             <div className="absolute -left-12 sm:-left-6 lg:left-0 bottom-0 w-50 sm:w-70 lg:w-86.5 pointer-events-none select-none z-10">
-                <Image src="/home/Hero/left3.svg" alt="Decorative Shape" width={346} height={343} priority className="w-full h-auto" />
+                <Image src="/home/Hero/left3.png" alt="Decorative Shape" width={346} height={343} priority className="w-full h-auto" />
             </div>
 
             <div className="absolute -right-8 lg:right-0 top-[18%] w-32.5 sm:w-45 lg:w-53.25 pointer-events-none select-none z-10">

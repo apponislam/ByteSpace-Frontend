@@ -11,16 +11,45 @@ export default function GrowthSection() {
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80",
+        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=120&q=80",
     ];
 
     const creatorFeatures = ["Share Your Expertise", "Monetize Your Passion", "Flexibility and Autonomy", "Build a Community"];
 
     return (
         <section className="relative w-full overflow-hidden bg-white py-20 sm:py-24 lg:py-32">
-            <div className="absolute top-0 left-[-10%] w-[45vw] h-[45vw] max-w-150 max-h-150 rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
-            <div className="absolute top-[20%] right-[-5%] w-[40vw] h-[40vw] max-w-137.5 max-h-137.5 rounded-full bg-[#0052FE]/10 blur-[130px] pointer-events-none select-none" />
-            <div className="absolute bottom-[15%] left-[-8%] w-[45vw] h-[45vw] max-w-137.5 max-h-137.5 rounded-full bg-[#D4FB20]/15 blur-30 pointer-events-none select-none" />
-            <div className="absolute bottom-[-5%] right-[-10%] w-[50vw] h-[50vw] max-w-162.5 max-h-162.5 rounded-full bg-[#8B5CF6]/10 blur-35 pointer-events-none select-none" />
+            {/* Top-Left Lime Accent: #CBFC01 at 60% opacity */}
+            <div
+                className="absolute -top-24 -left-32 w-162.5 h-162.5 rounded-full pointer-events-none select-none blur-[90px]"
+                style={{
+                    background: "radial-gradient(circle, rgba(203, 252, 1, 0.6) 0%, rgba(203, 252, 1, 0.23) 53%, rgba(203, 252, 1, 0.06) 75%, rgba(203, 252, 1, 0) 100%)",
+                }}
+            />
+
+            {/* Top-Right Blue Accent: #003BE2 at 8% opacity */}
+            <div
+                className="absolute top-[10%] -right-24 w-150 h-150 rounded-full pointer-events-none select-none blur-[100px]"
+                style={{
+                    background: "radial-gradient(circle, rgba(0, 59, 226, 0.08) 0%, rgba(0, 59, 226, 0.04) 53%, rgba(0, 59, 226, 0.01) 75%, rgba(0, 59, 226, 0) 100%)",
+                }}
+            />
+
+            {/* Bottom-Left Lime Accent: #CBFC01 at 40% opacity */}
+            <div
+                className="absolute bottom-[5%] -left-28 w-150 h-150 rounded-full pointer-events-none select-none blur-[90px]"
+                style={{
+                    background: "radial-gradient(circle, rgba(203, 252, 1, 0.4) 0%, rgba(203, 252, 1, 0.23) 53%, rgba(203, 252, 1, 0.06) 75%, rgba(203, 252, 1, 0) 100%)",
+                }}
+            />
+
+            {/* Bottom-Right Blue Accent: #003BE2 at 24% opacity */}
+            <div
+                className="absolute -bottom-24 -right-28 w-175 h-175 rounded-full pointer-events-none select-none blur-[110px]"
+                style={{
+                    background: "radial-gradient(circle, rgba(0, 59, 226, 0.24) 0%, rgba(0, 59, 226, 0.12) 53%, rgba(0, 59, 226, 0.03) 75%, rgba(0, 59, 226, 0) 100%)",
+                }}
+            />
 
             <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col gap-24 sm:gap-32 lg:gap-40">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
@@ -59,7 +88,7 @@ export default function GrowthSection() {
                         </div>
 
                         <div className="absolute top-2 sm:top-4 right-0 sm:right-4 w-[28%] sm:w-[32%] z-0 pointer-events-none select-none">
-                            <Image src="/home/growth/person1icon1.svg" alt="Shape" width={216} height={216} priority className="w-full h-auto object-contain" />
+                            <Image src="/home/growth/person1icon1.png" alt="Shape" width={216} height={216} priority className="w-full h-auto object-contain" />
                         </div>
 
                         <div className="relative z-20 w-[84%] sm:w-[88%] mt-12 sm:mt-16 ml-auto pointer-events-none select-none">
@@ -79,7 +108,7 @@ export default function GrowthSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
                     <div className="order-2 lg:order-1 relative w-full max-w-140 mx-auto min-h-110 sm:min-h-130 flex items-center justify-center">
                         <div className="absolute top-[28%] right-2 sm:right-6 w-[28%] sm:w-[32%] z-0 pointer-events-none select-none">
-                            <Image src="/home/growth/person2icon1.svg" alt="Shape" width={217} height={216} priority className="w-full h-auto object-contain" />
+                            <Image src="/home/growth/person2icon1.png" alt="Shape" width={217} height={216} priority className="w-full h-auto object-contain" />
                         </div>
 
                         <div className="relative z-10 w-[78%] sm:w-[82%] mx-auto pointer-events-none select-none">

@@ -10,37 +10,64 @@
 
 ## Overview
 
-**ByteSpace** is an educational technology web application delivering a digital learning experience. It combines brand identity (blueprint grid styling, vibrant lime accents `#D4FB20`, and brand blue `#003BE2`) with performant App Router architecture, responsive UI components, and client-side form validation.
+**ByteSpace** is a comprehensive educational technology web application delivering a premium digital learning and creator experience. It combines a distinctive brand identity (blueprint grid styling, vibrant lime accents `#D4FB20`, and brand blue `#003BE2`) with performant App Router architecture, responsive UI components, client-side form validation, course catalog exploration, detailed course pages, creator profiles, and legal policy documentation.
 
 ---
 
-## Key Features
+## Key Features & Pages
 
-### 1. Landing Page
+### 1. Landing Page (`/`)
 
-- **Adaptive Navigation Bar**: Sticky header featuring dynamic scroll detection, blur backdrop, smooth height transitions, and a mobile drawer.
-- **Hero Area**: High-impact banner with 3D decorative shapes, fast course search, and student engagement metrics.
-- **Course Showcase**: Interactive cards featuring lesson counters, duration, student ratings, level tags, overlapping student avatars, and pricing.
-- **Interactive Growth Section**: Visually rich cards highlighting student success and skill roadmaps.
-- **Student Testimonials**: Community review showcase highlighting learner feedback and course ratings.
+- **Adaptive Header Navigation**: Sticky header with scroll detection, backdrop blur, active link indicators, and responsive mobile slide-out drawer.
+- **Hero Area**: High-impact banner featuring custom 3D decorative shapes, fast keyword course search, and student engagement metrics.
+- **Top Courses Showcase**: Reusable course cards featuring lesson counters, video duration, student ratings, difficulty tags, overlapping student avatars, and pricing.
+- **Interactive Growth & Unlock Sections**: Visually rich sections highlighting student achievements, platform statistics, and community creator recruitment.
+- **Student Testimonials**: Community review showcase highlighting learner feedback, star ratings, and student stories.
 
 ### 2. Course Catalog & Discovery (`/courses`)
 
-- **Course Hero Banner**: Blueprint grid banner with live search and category select.
-- **Multi-Level Filtering Toolbar**:
-    - Filter by difficulty level (_Beginner_, _Intermediate_, _Advanced_).
-    - Filter by category pills (_Featured_, _Music_, _Drawing & Painting_, _Marketing_, _Animation_, _Social Media_, _UI/UX Design_, _Creative Marketing_, _Cooking_).
-    - Sorting options (_Most relevant_, _Highest rated_, _Newest_, _Price: Low to High_).
-- **Responsive 12-Card Grid**: Clean, balanced 3-column layout showcasing courses with instructor credits and enrollment counters.
-- **Dynamic Pagination**: Page-switching controls with previous/next triggers and active page indicators.
+- **Course Hero Banner**: Custom blueprint grid hero with interactive keyword search and category selection dropdown.
+- **Interactive Filtering Toolbar**:
+  - Difficulty level filter dropdown (*All*, *Beginner*, *Intermediate*, *Advanced*).
+  - Collapsible category pill bar (*Featured*, *Music*, *Drawing & Painting*, *Marketing*, *Animation*, *Social Media*, *UI/UX Design*, *Creative Marketing*, *Cooking*).
+  - Sorting selector (*Most relevant*, *Highest rated*, *Newest*, *Price: Low to High*).
+- **Responsive 12-Card Grid**: Balanced 3-column responsive grid displaying courses with author credits, star ratings, and price tags.
+- **Pagination Controls**: Page navigation with previous/next triggers and active page indicators.
 
-### 3. Dedicated Authentication Suite (`/login` & `/register`)
+### 3. Course Details Page (`/courses/[id]`)
 
-- **Strict Two-Page Architecture**: Distraction-free `/login` and `/register` routes.
-- **Figma-Accurate 3D Visual Cluster**: Integrated blueprint grid, overlapping course cards, floating geometric 3D shapes (`icon1.svg`, `icon2.svg`, `icon3.svg`), and _Happy Students_ badge.
-- **Form Handling & Validation**: Built with `react-hook-form` and `zod` schemas providing real-time feedback and type-safe error handling.
-- **Social Login Options**: One-tap sign-in entry points for Google and Facebook.
-- **SEO Ready**: Dedicated Next.js `metadata` for titles and descriptions.
+- **Course Overview**: In-depth course page with video preview hero, objective breakdown, skill tags, and curriculum tabs.
+- **Interactive Curriculum Accordion**: Expandable module breakdown listing individual lessons with duration markers.
+- **Instructor Sidebar Card**: Profile widget linking to the instructor's dedicated creator profile page.
+- **Sticky Course Pricing Box**: Desktop sticky widget for instant course enrollment and checkout triggers.
+
+### 4. Creator Directory & Profiles (`/creators` & `/creators/[slug]`)
+
+- **Creators Directory (`/creators`)**:
+  - Hero banner with creator search bar and skill discipline filter pills.
+  - Creator card grid displaying avatar, bio snippet, total courses published, followers count, and star rating.
+  - Built-in pagination and search filtering.
+- **Creator Profile View (`/creators/[slug]`)**:
+  - Full creator biography, secondary background story, and social links.
+  - Metrics breakdown (total students, total courses, rating score).
+  - Published course portfolio grid.
+
+### 5. Creator Application (`/creators/apply`)
+
+- **Creator Onboarding Portal**: Dedicated application page for prospective instructors.
+- **Interactive Application Form**: Experience selection, portfolio URL inputs, bio description, and social channel submissions.
+
+### 6. Authentication Suite (`/login` & `/register`)
+
+- **Distraction-Free Auth Architecture**: Dedicated layout isolated from header/footer.
+- **Figma-Accurate 3D Illustration**: Integrated blueprint grid, overlapping course cards, floating geometric 3D shapes (`icon1.svg`, `icon2.svg`, `icon3.svg`), and *Happy Students* badge.
+- **Form Validation**: Powered by `react-hook-form` and `zod` schemas providing real-time feedback and type-safe error messages.
+- **Social Sign-In**: Quick access options for Google and Facebook login.
+
+### 7. Legal & Compliance (`/privacy` & `/terms`)
+
+- **Privacy Policy (`/privacy`)**: Structured document outlining data collection, cookie policy, user rights, and contact information.
+- **Terms of Service (`/terms`)**: Platform terms covering account registration, intellectual property, payments, refund policies, and user conduct.
 
 ---
 
@@ -61,10 +88,10 @@
 ## Project Structure
 
 ```text
-bytespace-frontend/
+ByteSpace-Frontend/
 ├── app/
-│   ├── (auth)/                  # Isolated authentication layout & pages
-│   │   ├── layout.tsx           # Blueprint background layout
+│   ├── (auth)/                  # Isolated auth layout & pages
+│   │   ├── layout.tsx           # Auth blueprint background layout
 │   │   ├── login/               # Sign In route (/login)
 │   │   │   └── page.tsx
 │   │   └── register/            # Sign Up route (/register)
@@ -72,31 +99,58 @@ bytespace-frontend/
 │   ├── (root)/                  # Main application layout & pages
 │   │   ├── layout.tsx           # Common layout with Header and Footer
 │   │   ├── page.tsx             # Home landing page
-│   │   └── courses/             # Course catalog route (/courses)
+│   │   ├── courses/             # Course routes
+│   │   │   ├── page.tsx         # Catalog page (/courses)
+│   │   │   └── [id]/            # Course details page (/courses/[id])
+│   │   │       └── page.tsx
+│   │   ├── creators/            # Creator routes
+│   │   │   ├── page.tsx         # Creators directory (/creators)
+│   │   │   ├── apply/           # Creator application (/creators/apply)
+│   │   │   │   └── page.tsx
+│   │   │   └── [slug]/          # Creator profile page (/creators/[slug])
+│   │   │       └── page.tsx
+│   │   ├── privacy/             # Privacy Policy (/privacy)
+│   │   │   └── page.tsx
+│   │   └── terms/               # Terms of Service (/terms)
 │   │       └── page.tsx
-│   ├── globals.css              # Tailwind v4 directives & theme variables
+│   ├── globals.css              # Tailwind v4 directives & custom utilities
 │   └── layout.tsx               # Root document layout
 ├── components/
 │   ├── auth/                    # Auth-specific UI components
-│   │   ├── AuthVisual.tsx       # 3D cards and shapes illustration
+│   │   ├── AuthVisual.tsx       # 3D illustration cards and icons
 │   │   ├── LoginForm.tsx        # React Hook Form + Zod Login form
 │   │   └── RegisterForm.tsx     # React Hook Form + Zod Register form
-│   ├── courses/                 # Courses catalog components
-│   │   ├── CourseHero.tsx       # Search and category hero
-│   │   └── CourseList.tsx       # Filters, pills, 12-card grid & pagination
+│   ├── courses/                 # Courses components
+│   │   ├── CourseHero.tsx       # Search and category dropdown hero
+│   │   ├── CourseList.tsx       # Filters, pills, course grid & pagination
+│   │   └── CourseDetails/       # Course detail page components
+│   │       ├── CourseDetailsHero.tsx
+│   │       ├── CourseDetailsView.tsx
+│   │       ├── CourseSidebar.tsx
+│   │       └── CurriculumAccordion.tsx
+│   ├── creators/                # Creator components
+│   │   ├── CreatorListView.tsx  # Creator directory & pagination
+│   │   ├── CreatorDetailsView.tsx # Creator profile view
+│   │   └── CreatorApplyView.tsx # Creator application form view
 │   ├── home/                    # Landing page sections
-│   │   ├── HeroArea.tsx         # Hero section
+│   │   ├── HeroArea.tsx         # Hero section with search & 3D shapes
 │   │   ├── GrowthSection.tsx    # Growth & achievements section
-│   │   └── TestimonialSection.tsx
+│   │   ├── UnlockSection.tsx    # Creator CTA banner section
+│   │   └── TestimonialSection.tsx # Student reviews section
+│   ├── legal/                   # Legal page components
+│   │   ├── PrivacyView.tsx      # Privacy Policy view
+│   │   └── TermsView.tsx        # Terms of Service view
 │   ├── CourseCard.tsx           # Universal reusable course card
 │   ├── Header.tsx               # Main sticky navigation
 │   └── Footer.tsx               # Footer component
 ├── data/
-│   └── course.ts                # Strongly-typed course data and schema
+│   ├── course.ts                # Strongly-typed course dataset and schemas
+│   └── creator.ts               # Creator dataset and helper getters
 └── public/
-    ├── auth/                    # 3D shapes and card vector graphics
-    ├── home/                    # Landing page decorative assets
-    └── logo.svg                 # ByteSpace brand icon
+    ├── auth/                    # 3D shapes and vector graphics
+    ├── creators/                # Creator avatar images
+    ├── home/                    # Hero decorative assets
+    └── logo.svg                 # ByteSpace brand logo
 ```
 
 ---
@@ -140,7 +194,7 @@ bytespace-frontend/
 - `npm run build` - Creates an optimized production build.
 - `npm run start` - Runs the production server after building.
 - `npm run lint` - Runs ESLint code style and syntax checks.
-- `npx tsc --noEmit` - Validates TypeScript types across the entire project.
+- `npx tsc --noEmit` - Validates TypeScript types across the entire project codebase.
 
 ---
 

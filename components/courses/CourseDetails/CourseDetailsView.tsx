@@ -30,6 +30,42 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
     const price = course?.price || 25;
     const pricePeriod = course?.pricePeriod || "lifetime";
 
+    const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+    const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
+
+    const demoVideos = [
+        {
+            title: "1. Introduction to Digital Creation & Strategy",
+            url: "https://vjs.zencdn.net/v/oceans.mp4",
+            duration: "02:15",
+        },
+        {
+            title: "2. Setting Up Your Creative Workspace & Tools",
+            url: "https://media.w3.org/2010/05/sintel/trailer.mp4",
+            duration: "03:40",
+        },
+        {
+            title: "3. Core Principles of Modern UI/UX Architecture",
+            url: "https://media.w3.org/2010/05/bunny/trailer.mp4",
+            duration: "05:12",
+        },
+        {
+            title: "4. Building High-Converting Digital Assets",
+            url: "https://media.w3.org/2010/05/bunny/movie.mp4",
+            duration: "04:30",
+        },
+        {
+            title: "5. Color Theory, Typography & Visual Grids",
+            url: "https://vjs.zencdn.net/v/oceans.mp4",
+            duration: "06:05",
+        },
+        {
+            title: "6. Advanced Component Styling & Responsive Layouts",
+            url: "https://media.w3.org/2010/05/sintel/trailer.mp4",
+            duration: "08:45",
+        },
+    ];
+
     const tabs = [
         { id: "about", label: "About" },
         { id: "lesson", label: "Lesson" },
@@ -243,21 +279,48 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
 
                     <div className="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                         <div className="lg:col-span-8 flex flex-col">
-                            <div ref={videoRef} className="relative w-full aspect-16/10 rounded-[28px] sm:rounded-[36px] overflow-hidden bg-zinc-900 shadow-2xl border-4 border-white group">
-                                <Image
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
-                                    alt="Course Video Preview"
-                                    fill
-                                    priority
-                                    sizes="(max-width: 1024px) 100vw, 66vw"
-                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                                />
+                            <div ref={videoRef} className="relative w-full aspect-16/10 rounded-[28px] sm:rounded-[36px] overflow-hidden bg-zinc-950 shadow-2xl border-4 border-white group">
+                                {isPlayingVideo ? (
+                                    <div className="relative w-full h-full flex flex-col bg-black">
+                                        <video
+                                            key={demoVideos[selectedVideoIndex].url}
+                                            src={demoVideos[selectedVideoIndex].url}
+                                            controls
+                                            autoPlay
+                                            playsInline
+                                            className="w-full h-full object-contain"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => setIsPlayingVideo(false)}
+                                            className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-black text-white text-xs font-semibold backdrop-blur-md cursor-pointer transition-all"
+                                        >
+                                            Close Video
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <Image
+                                            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
+                                            alt="Course Video Preview"
+                                            fill
+                                            priority
+                                            sizes="(max-width: 1024px) 100vw, 66vw"
+                                            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                        />
 
-                                <div className="absolute inset-0 bg-black/15 flex items-center justify-center">
-                                    <button type="button" aria-label="Play Course Preview" className="size-16 sm:size-20 rounded-full bg-white/75 hover:bg-white backdrop-blur-md flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer">
-                                        <Play className="size-7 sm:size-8 fill-zinc-950 text-zinc-950 ml-1" />
-                                    </button>
-                                </div>
+                                        <div className="absolute inset-0 bg-black/15 flex items-center justify-center">
+                                            <button
+                                                type="button"
+                                                onClick={() => setIsPlayingVideo(true)}
+                                                aria-label="Play Course Preview"
+                                                className="size-16 sm:size-20 rounded-full bg-white/75 hover:bg-white backdrop-blur-md flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+                                            >
+                                                <Play className="size-7 sm:size-8 fill-zinc-950 text-zinc-950 ml-1" />
+                                            </button>
+                                        </div>
+                                    </>
+                                )}
                             </div>
 
                             <div className="mt-20 sm:mt-24 md:mt-28 flex items-center gap-2 sm:gap-3">
@@ -278,7 +341,17 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
 
                             <div className="mt-8 sm:mt-10">
                                 {activeTab === "about" && <AboutTab />}
-                                {activeTab === "lesson" && <LessonsTab />}
+                                {activeTab === "lesson" && (
+                                    <LessonsTab
+                                        onPlayVideo={(videoUrl) => {
+                                            if (videoUrl) {
+                                                setSelectedVideoIndex(demoVideos.findIndex((v) => v.url === videoUrl) !== -1 ? demoVideos.findIndex((v) => v.url === videoUrl) : 0);
+                                            }
+                                            setIsPlayingVideo(true);
+                                            videoRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                                        }}
+                                    />
+                                )}
                                 {activeTab === "reviews" && <ReviewsTab />}
                             </div>
                         </div>
