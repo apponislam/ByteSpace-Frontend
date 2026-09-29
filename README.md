@@ -63,22 +63,18 @@ Check out the live application hosted on Vercel:
   - Metrics breakdown (total students, total courses, rating score).
   - Published course portfolio grid.
 
-### 5. Creator Application (`/creators/apply`)
-
-- **Creator Onboarding Portal**: Dedicated application page for prospective instructors.
-- **Interactive Application Form**: Experience selection, portfolio URL inputs, bio description, and social channel submissions.
-
-### 6. Authentication Suite (`/login` & `/register`)
+### 5. Authentication Suite (`/login` & `/register`)
 
 - **Distraction-Free Auth Architecture**: Dedicated layout isolated from header/footer.
-- **Figma-Accurate 3D Illustration**: Integrated blueprint grid, overlapping course cards, floating geometric 3D shapes (`icon1.svg`, `icon2.svg`, `icon3.svg`), and *Happy Students* badge.
+- **Figma-Accurate 3D Illustration**: Integrated blueprint grid, overlapping course cards, floating geometric 3D shapes (`icon1.png`, `icon2.png`, `icon3.png`), and *Happy Students* badge.
 - **Form Validation**: Powered by `react-hook-form` and `zod` schemas providing real-time feedback and type-safe error messages.
 - **Social Sign-In**: Quick access options for Google and Facebook login.
 
-### 7. Legal & Compliance (`/privacy` & `/terms`)
+### 6. Legal & Compliance (`/privacy-policy` & `/terms`)
 
-- **Privacy Policy (`/privacy`)**: Structured document outlining data collection, cookie policy, user rights, and contact information.
+- **Privacy Policy (`/privacy-policy`)**: Structured document outlining data collection, cookie policy, user rights, and contact information.
 - **Terms of Service (`/terms`)**: Platform terms covering account registration, intellectual property, payments, refund policies, and user conduct.
+- **Cookie Consent**: Interactive cookie consent banner with customizable preference controls.
 
 ---
 
@@ -112,15 +108,13 @@ ByteSpace-Frontend/
 │   │   ├── page.tsx             # Home landing page
 │   │   ├── courses/             # Course routes
 │   │   │   ├── page.tsx         # Catalog page (/courses)
-│   │   │   └── [id]/            # Course details page (/courses/[id])
+│   │   │   └── [slug]/          # Course details page (/courses/[slug])
 │   │   │       └── page.tsx
 │   │   ├── creators/            # Creator routes
 │   │   │   ├── page.tsx         # Creators directory (/creators)
-│   │   │   ├── apply/           # Creator application (/creators/apply)
-│   │   │   │   └── page.tsx
 │   │   │   └── [slug]/          # Creator profile page (/creators/[slug])
 │   │   │       └── page.tsx
-│   │   ├── privacy/             # Privacy Policy (/privacy)
+│   │   ├── privacy-policy/      # Privacy Policy (/privacy-policy)
 │   │   │   └── page.tsx
 │   │   └── terms/               # Terms of Service (/terms)
 │   │       └── page.tsx
@@ -134,23 +128,26 @@ ByteSpace-Frontend/
 │   ├── courses/                 # Courses components
 │   │   ├── CourseHero.tsx       # Search and category dropdown hero
 │   │   ├── CourseList.tsx       # Filters, pills, course grid & pagination
+│   │   ├── CoursesClient.tsx    # Client-side course listing wrapper
 │   │   └── CourseDetails/       # Course detail page components
-│   │       ├── CourseDetailsHero.tsx
-│   │       ├── CourseDetailsView.tsx
-│   │       ├── CourseSidebar.tsx
-│   │       └── CurriculumAccordion.tsx
+│   │       ├── AboutTab.tsx     # Course description & objectives
+│   │       ├── CourseDetailsView.tsx # Main course detail layout
+│   │       ├── CourseSidebar.tsx# Sticky enrollment & pricing widget
+│   │       ├── LessonsTab.tsx   # Curriculum accordion & video preview
+│   │       └── ReviewsTab.tsx   # Student feedback & ratings
 │   ├── creators/                # Creator components
 │   │   ├── CreatorListView.tsx  # Creator directory & pagination
-│   │   ├── CreatorDetailsView.tsx # Creator profile view
-│   │   └── CreatorApplyView.tsx # Creator application form view
+│   │   └── CreatorDetailsView.tsx # Creator profile view
 │   ├── home/                    # Landing page sections
 │   │   ├── HeroArea.tsx         # Hero section with search & 3D shapes
+│   │   ├── CategorySection.tsx  # Course categories
+│   │   ├── Companies.tsx        # Partner company logos
+│   │   ├── ExloreSection.tsx    # Explore popular courses
 │   │   ├── GrowthSection.tsx    # Growth & achievements section
 │   │   ├── UnlockSection.tsx    # Creator CTA banner section
 │   │   └── TestimonialSection.tsx # Student reviews section
-│   ├── legal/                   # Legal page components
-│   │   ├── PrivacyView.tsx      # Privacy Policy view
-│   │   └── TermsView.tsx        # Terms of Service view
+│   ├── CookieConsentManager.tsx # Cookie consent modal & preferences
+│   ├── OpenCookiesButton.tsx    # Cookie settings trigger
 │   ├── CourseCard.tsx           # Universal reusable course card
 │   ├── Header.tsx               # Main sticky navigation
 │   └── Footer.tsx               # Footer component
