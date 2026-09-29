@@ -4,7 +4,18 @@
   <img src="public/logo.svg" alt="ByteSpace Logo" width="64" height="64" />
   <h3>Level Up Your Skills With ByteSpace</h3>
   <p>A modern, high-performance e-learning platform and digital course marketplace built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.</p>
+
+  <br />
+
+  [**🌐 View Live Demo**](https://bytespace-frontend-indol.vercel.app) • [**GitHub Repository**](https://github.com/apponislam/ByteSpace-Frontend)
 </div>
+
+---
+
+## 🚀 Live Demo
+
+Check out the live application hosted on Vercel:
+👉 **[https://bytespace-frontend-indol.vercel.app](https://bytespace-frontend-indol.vercel.app)**
 
 ---
 
@@ -200,4 +211,4 @@ ByteSpace-Frontend/
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
