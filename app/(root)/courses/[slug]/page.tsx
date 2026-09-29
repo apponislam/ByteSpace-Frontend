@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: CourseDetailPageProps): Promi
     const course = coursesData.find((c) => c.slug === slug || c.id === slug) || coursesData.find((c) => c.slug === "build-digital-asset") || coursesData[0];
 
     return {
-        title: `${course?.title || "Course Details"} - ByteSpace`,
+        title: course?.title || "Course Details",
         description: `Learn ${course?.title || "digital skills"} on ByteSpace with expert guidance.`,
     };
 }

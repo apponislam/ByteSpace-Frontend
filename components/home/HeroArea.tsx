@@ -1,10 +1,66 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { Search, Star } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Search, Star, BookOpen, User, X, ChevronRight } from "lucide-react";
+import { coursesData } from "@/data/course";
+import { creatorsData } from "@/data/creator";
 
 export default function HeroArea() {
+    const [query, setQuery] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+    const searchRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const trimmed = query.trim().toLowerCase();
+
+    const matchedCourses = trimmed
+        ? coursesData
+              .filter(
+                  (c) =>
+                      c.title.toLowerCase().includes(trimmed) ||
+                      c.category.toLowerCase().includes(trimmed) ||
+                      c.author.name.toLowerCase().includes(trimmed)
+              )
+              .slice(0, 4)
+        : [];
+
+    const matchedCreators = trimmed
+        ? creatorsData
+              .filter(
+                  (cr) =>
+                      cr.name.toLowerCase().includes(trimmed) ||
+                      cr.role.toLowerCase().includes(trimmed) ||
+                      cr.category.toLowerCase().includes(trimmed)
+              )
+              .slice(0, 3)
+        : [];
+
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!trimmed) return;
+        if (matchedCourses.length > 0) {
+            router.push(`/courses/${matchedCourses[0].slug}`);
+        } else if (matchedCreators.length > 0) {
+            router.push(`/creators/${matchedCreators[0].slug}`);
+        } else {
+            router.push(`/courses`);
+        }
+        setIsOpen(false);
+    };
+
     const studentAvatars = [
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
@@ -58,16 +114,142 @@ export default function HeroArea() {
 
                 <p className="mt-5 sm:mt-6 text-center text-sm sm:text-base md:text-lg text-white/90 max-w-2xl font-normal leading-relaxed">Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.</p>
 
-                <div className="mt-8 sm:mt-10 w-full max-w-xl">
-                    <form onSubmit={(e) => e.preventDefault()} className="flex items-center gap-3 bg-white/0 p-1">
-                        <div className="relative flex-1">
-                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 size-5 text-zinc-400 stroke-2" />
-                            <input type="text" placeholder="Course, topic, creator" className="w-full h-14 pl-13 pr-6 rounded-full bg-white text-zinc-900 placeholder:text-zinc-400 text-sm sm:text-base font-normal shadow-lg shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-[#D4FB20]" />
+                <div ref={searchRef} className="relative mt-8 sm:mt-10 w-full max-w-xl z-50">
+                    <form onSubmit={handleFormSubmit} className="flex items-center gap-3 bg-white/0 p-1">
+                        <div className="relative flex-1 text-zinc-900">
+                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 size-5 text-zinc-400 stroke-2 pointer-events-none" />
+                            <input
+                                type="text"
+                                value={query}
+                                onChange={(e) => {
+                                    setQuery(e.target.value);
+                                    setIsOpen(true);
+                                }}
+                                onFocus={() => {
+                                    if (query.trim().length > 0) setIsOpen(true);
+                                }}
+                                placeholder="Course, topic, creator"
+                                className="w-full h-14 pl-13 pr-10 rounded-full bg-white placeholder:text-zinc-400 text-sm sm:text-base font-normal shadow-lg shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-[#D4FB20]"
+                            />
+                            {query && (
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setQuery("");
+                                        setIsOpen(false);
+                                    }}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-zinc-700 rounded-full transition-colors cursor-pointer"
+                                    aria-label="Clear search"
+                                >
+                                    <X className="size-4" />
+                                </button>
+                            )}
                         </div>
-                        <button type="submit" className="h-14 px-8 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md shadow-black/10 shrink-0 cursor-pointer">
+                        <button
+                            type="submit"
+                            className="h-14 px-8 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md shadow-black/10 shrink-0 cursor-pointer"
+                        >
                             Search
                         </button>
                     </form>
+
+                    {/* Dropdown Menu */}
+                    {isOpen && trimmed.length > 0 && (
+                        <div className="absolute top-full left-1 right-1 mt-2 bg-white rounded-2xl shadow-2xl border border-zinc-100 overflow-hidden max-h-96 overflow-y-auto z-50">
+                            {matchedCourses.length === 0 && matchedCreators.length === 0 ? (
+                                <div className="p-6 text-center">
+                                    <p className="text-sm font-medium text-zinc-600">No courses or creators matching &ldquo;{query}&rdquo;</p>
+                                    <Link
+                                        href="/courses"
+                                        onClick={() => setIsOpen(false)}
+                                        className="inline-flex items-center gap-1.5 mt-2 text-xs font-semibold text-[#0052FE] hover:underline"
+                                    >
+                                        Browse all courses <ChevronRight className="size-3" />
+                                    </Link>
+                                </div>
+                            ) : (
+                                <>
+                                    {/* Courses Group */}
+                                    {matchedCourses.length > 0 && (
+                                        <div className="p-2">
+                                            <div className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
+                                                <BookOpen className="size-3.5 text-zinc-400" />
+                                                <span>Courses</span>
+                                            </div>
+                                            <div className="space-y-0.5">
+                                                {matchedCourses.map((course) => (
+                                                    <Link
+                                                        key={course.id}
+                                                        href={`/courses/${course.slug}`}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-50 transition-colors group"
+                                                    >
+                                                        <div className="relative size-10 rounded-lg overflow-hidden shrink-0 bg-zinc-100">
+                                                            <img
+                                                                src={course.image}
+                                                                alt={course.title}
+                                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                                            />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <h5 className="text-sm font-medium text-zinc-900 truncate group-hover:text-[#0052FE] transition-colors">
+                                                                {course.title}
+                                                            </h5>
+                                                            <div className="flex items-center gap-2 text-xs text-zinc-500 mt-0.5">
+                                                                <span>{course.category}</span>
+                                                                <span>&bull;</span>
+                                                                <span className="font-semibold text-zinc-700">${course.price}</span>
+                                                            </div>
+                                                        </div>
+                                                        <ChevronRight className="size-4 text-zinc-300 group-hover:text-zinc-500 shrink-0 mr-1" />
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Creators Group */}
+                                    {matchedCreators.length > 0 && (
+                                        <div className={`p-2 ${matchedCourses.length > 0 ? "border-t border-zinc-100" : ""}`}>
+                                            <div className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
+                                                <User className="size-3.5 text-zinc-400" />
+                                                <span>Creators</span>
+                                            </div>
+                                            <div className="space-y-0.5">
+                                                {matchedCreators.map((creator) => (
+                                                    <Link
+                                                        key={creator.id}
+                                                        href={`/creators/${creator.slug}`}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-50 transition-colors group"
+                                                    >
+                                                        <div className="relative size-10 rounded-full overflow-hidden shrink-0 bg-zinc-100 border border-zinc-200">
+                                                            <img
+                                                                src={creator.avatar}
+                                                                alt={creator.name}
+                                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                                            />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <h5 className="text-sm font-medium text-zinc-900 truncate group-hover:text-[#0052FE] transition-colors">
+                                                                {creator.name}
+                                                            </h5>
+                                                            <div className="flex items-center gap-2 text-xs text-zinc-500 mt-0.5">
+                                                                <span>{creator.role}</span>
+                                                                <span>&bull;</span>
+                                                                <span>{creator.category}</span>
+                                                            </div>
+                                                        </div>
+                                                        <ChevronRight className="size-4 text-zinc-300 group-hover:text-zinc-500 shrink-0 mr-1" />
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 <div className="relative w-full max-w-4xl mt-12 sm:mt-16 flex justify-center items-end min-h-115 sm:min-h-130 lg:min-h-145">

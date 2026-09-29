@@ -6,8 +6,8 @@ import AuthVisual from "@/components/auth/AuthVisual";
 import RegisterForm from "@/components/auth/RegisterForm";
 
 export const metadata: Metadata = {
-    title: "Register - ByteSpace",
-    description: "Create your ByteSpace account.",
+    title: "Create an Account",
+    description: "Create your ByteSpace account to start learning from expert creators and building digital skills.",
 };
 
 export default function RegisterPage() {

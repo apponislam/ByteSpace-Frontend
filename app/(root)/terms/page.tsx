@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Terms of Service - ByteSpace",
+    title: "Terms of Service",
     description: "Review the Terms of Service and conditions governing the use of ByteSpace.",
 };
 

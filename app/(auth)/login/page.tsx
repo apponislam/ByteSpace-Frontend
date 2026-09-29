@@ -6,8 +6,8 @@ import AuthVisual from "@/components/auth/AuthVisual";
 import LoginForm from "@/components/auth/LoginForm";
 
 export const metadata: Metadata = {
-    title: "Login - ByteSpace",
-    description: "Sign in to your ByteSpace account.",
+    title: "Sign In",
+    description: "Sign in to your ByteSpace account to access your courses and learning progress.",
 };
 
 export default function LoginPage() {

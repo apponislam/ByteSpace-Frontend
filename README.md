@@ -110,10 +110,22 @@ ByteSpace-Frontend/
 │   │   │   ├── page.tsx         # Catalog page (/courses)
 │   │   │   └── [slug]/          # Course details page (/courses/[slug])
 │   │   │       └── page.tsx
+│   │   ├── categories/          # Category routes
+│   │   │   ├── page.tsx         # Categories directory (/categories)
+│   │   │   └── [category]/      # Category courses page (/categories/[category])
+│   │   │       └── page.tsx
 │   │   ├── creators/            # Creator routes
 │   │   │   ├── page.tsx         # Creators directory (/creators)
 │   │   │   └── [slug]/          # Creator profile page (/creators/[slug])
 │   │   │       └── page.tsx
+│   │   ├── about/               # About Us (/about)
+│   │   │   └── page.tsx
+│   │   ├── affiliate/           # Affiliate Program (/affiliate)
+│   │   │   └── page.tsx
+│   │   ├── contact/             # Contact Us (/contact)
+│   │   │   └── page.tsx
+│   │   ├── help/                # Help Center & FAQ (/help)
+│   │   │   └── page.tsx
 │   │   ├── privacy-policy/      # Privacy Policy (/privacy-policy)
 │   │   │   └── page.tsx
 │   │   └── terms/               # Terms of Service (/terms)
