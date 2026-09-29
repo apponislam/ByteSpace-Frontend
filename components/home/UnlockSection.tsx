@@ -53,7 +53,7 @@ export default function UnlockSection() {
                     on the ByteSpace Course Library.
                 </p>
 
-                <Link href="/creators/apply" className="mt-8 inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md cursor-pointer">
+                <Link href="/register" className="mt-8 inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md cursor-pointer">
                     Join as Creator
                 </Link>
             </div>
