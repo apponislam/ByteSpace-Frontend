@@ -4,7 +4,7 @@ import Link from "next/link";
 import { BookOpen, Users, Award, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "About Us - ByteSpace",
+    title: "About Us",
     description: "Learn more about ByteSpace, our mission to empower digital creators, and our high-impact online courses.",
 };
 

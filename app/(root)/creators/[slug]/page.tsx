@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: CreatorPageProps): Promise<Me
     const creator = getCreatorBySlug(slug) || getCreatorBySlug("purepearl") || creatorsData[0];
 
     return {
-        title: `${creator.name} - Creator Profile | ByteSpace`,
+        title: `${creator.name} — Creator Profile`,
         description: creator.bio,
     };
 }

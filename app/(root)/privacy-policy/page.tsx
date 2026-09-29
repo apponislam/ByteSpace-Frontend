@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import OpenCookiesButton from "@/components/OpenCookiesButton";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy - ByteSpace",
+    title: "Privacy Policy",
     description: "Read ByteSpace's privacy policy to understand how we collect, use, and protect your personal data.",
 };
 
