@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Filter, BarChart2, Shapes, ListFilter, ChevronDown, Check, UserPlus } from "lucide-react";
 import CourseCard from "@/components/CourseCard";
@@ -23,6 +23,26 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
     const [isLevelOpen, setIsLevelOpen] = useState(false);
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
     const [isSortOpen, setIsSortOpen] = useState(false);
+
+    const levelRef = useRef<HTMLDivElement>(null);
+    const categoryRef = useRef<HTMLDivElement>(null);
+    const sortRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (levelRef.current && !levelRef.current.contains(event.target as Node)) {
+                setIsLevelOpen(false);
+            }
+            if (categoryRef.current && !categoryRef.current.contains(event.target as Node)) {
+                setIsCategoryOpen(false);
+            }
+            if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+                setIsSortOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     const levelOptions = ["All", "Beginner", "Intermediate", "Advanced"];
     const categoryOptions = ["All", "UI/UX Design", "Development", "Marketing", "Animation", "Social Media", "Drawing & Painting"];
@@ -140,7 +160,7 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                                 <span>Filter</span>
                             </button>
 
-                            <div className="relative">
+                            <div ref={levelRef} className="relative">
                                 <button
                                     type="button"
                                     onClick={() => {
@@ -148,15 +168,15 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                                         setIsCategoryOpen(false);
                                         setIsSortOpen(false);
                                     }}
-                                    className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer"
+                                    className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer ${selectedLevel !== "All" ? "ring-2 ring-[#003BE2]/20 border-[#003BE2]" : ""}`}
                                 >
                                     <BarChart2 className="size-4 text-zinc-700" />
                                     <span>{selectedLevel === "All" ? "Level" : selectedLevel}</span>
-                                    <ChevronDown className="size-3.5 text-zinc-500" />
+                                    <ChevronDown className={`size-3.5 text-zinc-500 transition-transform duration-200 ${isLevelOpen ? "rotate-180" : ""}`} />
                                 </button>
 
                                 {isLevelOpen && (
-                                    <div className="absolute left-0 mt-2 w-44 bg-white rounded-2xl shadow-xl py-2 z-30 border border-zinc-100">
+                                    <div className="absolute left-0 mt-2 w-44 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl py-2 z-30 border border-zinc-100 animate-in fade-in slide-in-from-top-2 duration-150 overflow-hidden">
                                         {levelOptions.map((level) => (
                                             <button
                                                 key={level}
@@ -165,16 +185,19 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                                                     setSelectedLevel(level);
                                                     setIsLevelOpen(false);
                                                 }}
-                                                className={`w-full text-left px-4 py-2 text-xs sm:text-sm transition-colors cursor-pointer ${selectedLevel === level ? "bg-zinc-100 text-black font-semibold" : "text-zinc-700 hover:bg-zinc-50"}`}
+                                                className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer flex items-center justify-between ${selectedLevel === level ? "bg-[#003BE2]/10 text-[#003BE2] font-semibold" : "text-zinc-700 hover:bg-zinc-100/80 hover:text-zinc-900"}`}
                                             >
-                                                {level}
+                                                <span>{level}</span>
+                                                {selectedLevel === level && (
+                                                    <span className="size-1.5 rounded-full bg-[#003BE2]" />
+                                                )}
                                             </button>
                                         ))}
                                     </div>
                                 )}
                             </div>
 
-                            <div className="relative">
+                            <div ref={categoryRef} className="relative">
                                 <button
                                     type="button"
                                     onClick={() => {
@@ -182,15 +205,15 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                                         setIsLevelOpen(false);
                                         setIsSortOpen(false);
                                     }}
-                                    className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer"
+                                    className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-zinc-200 bg-white text-xs sm:text-sm font-medium text-zinc-800 hover:bg-zinc-50 active:scale-95 transition-all shadow-2xs cursor-pointer ${selectedCategory !== "All" ? "ring-2 ring-[#003BE2]/20 border-[#003BE2]" : ""}`}
                                 >
                                     <Shapes className="size-4 text-zinc-700" />
                                     <span>{selectedCategory === "All" ? "Category" : selectedCategory}</span>
-                                    <ChevronDown className="size-3.5 text-zinc-500" />
+                                    <ChevronDown className={`size-3.5 text-zinc-500 transition-transform duration-200 ${isCategoryOpen ? "rotate-180" : ""}`} />
                                 </button>
 
                                 {isCategoryOpen && (
-                                    <div className="absolute left-0 mt-2 w-52 bg-white rounded-2xl shadow-xl py-2 z-30 border border-zinc-100">
+                                    <div className="absolute left-0 mt-2 w-52 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl py-2 z-30 border border-zinc-100 animate-in fade-in slide-in-from-top-2 duration-150 overflow-hidden">
                                         {categoryOptions.map((cat) => (
                                             <button
                                                 key={cat}
@@ -199,9 +222,12 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                                                     setSelectedCategory(cat);
                                                     setIsCategoryOpen(false);
                                                 }}
-                                                className={`w-full text-left px-4 py-2 text-xs sm:text-sm transition-colors cursor-pointer ${selectedCategory === cat ? "bg-zinc-100 text-black font-semibold" : "text-zinc-700 hover:bg-zinc-50"}`}
+                                                className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer flex items-center justify-between ${selectedCategory === cat ? "bg-[#003BE2]/10 text-[#003BE2] font-semibold" : "text-zinc-700 hover:bg-zinc-100/80 hover:text-zinc-900"}`}
                                             >
-                                                {cat}
+                                                <span>{cat}</span>
+                                                {selectedCategory === cat && (
+                                                    <span className="size-1.5 rounded-full bg-[#003BE2]" />
+                                                )}
                                             </button>
                                         ))}
                                     </div>
@@ -209,7 +235,7 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                             </div>
                         </div>
 
-                        <div className="relative">
+                        <div ref={sortRef} className="relative">
                             <button
                                 type="button"
                                 onClick={() => {
@@ -221,11 +247,11 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                             >
                                 <ListFilter className="size-4 text-zinc-700" />
                                 <span>{selectedSort}</span>
-                                <ChevronDown className="size-3.5 text-zinc-500" />
+                                <ChevronDown className={`size-3.5 text-zinc-500 transition-transform duration-200 ${isSortOpen ? "rotate-180" : ""}`} />
                             </button>
 
                             {isSortOpen && (
-                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl py-2 z-30 border border-zinc-100">
+                                <div className="absolute right-0 mt-2 w-48 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl py-2 z-30 border border-zinc-100 animate-in fade-in slide-in-from-top-2 duration-150 overflow-hidden">
                                     {sortOptions.map((option) => (
                                         <button
                                             key={option}
@@ -234,9 +260,12 @@ export default function CreatorDetailsView({ creator, courses }: CreatorDetailsV
                                                 setSelectedSort(option);
                                                 setIsSortOpen(false);
                                             }}
-                                            className={`w-full text-left px-4 py-2 text-xs sm:text-sm transition-colors cursor-pointer ${selectedSort === option ? "bg-zinc-100 text-black font-semibold" : "text-zinc-700 hover:bg-zinc-50"}`}
+                                            className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer flex items-center justify-between ${selectedSort === option ? "bg-[#003BE2]/10 text-[#003BE2] font-semibold" : "text-zinc-700 hover:bg-zinc-100/80 hover:text-zinc-900"}`}
                                         >
-                                            {option}
+                                            <span>{option}</span>
+                                            {selectedSort === option && (
+                                                <span className="size-1.5 rounded-full bg-[#003BE2]" />
+                                            )}
                                         </button>
                                     ))}
                                 </div>
