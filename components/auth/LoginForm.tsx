@@ -32,8 +32,8 @@ export default function LoginForm() {
 
     return (
         <div className="w-full max-w-135 bg-white rounded-3xl p-7 sm:p-10 lg:p-12 shadow-2xl transition-all duration-300 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)]">
-            <span className="text-[#0052FE] text-xs sm:text-sm font-semibold tracking-wide">Sign In</span>
-            <h1 className="text-2xl sm:text-3xl lg:text-[38px] font-bold text-zinc-900 tracking-tight mt-1 leading-tight">Welcome Back</h1>
+            <span className="text-[#0052FE] font-satoshi font-normal text-base sm:text-[18px]">Sign In</span>
+            <h1 className="font-poppins font-semibold text-3xl sm:text-4xl lg:text-[44px] text-zinc-900 mt-1 leading-tight">Welcome Back</h1>
 
             <form onSubmit={handleSubmit(onSubmit)} className="mt-8 flex flex-col gap-5">
                 <div className="flex flex-col gap-1.5">

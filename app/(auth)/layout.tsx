@@ -10,12 +10,12 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                     background: "radial-gradient(circle, rgba(212, 251, 32, 0.28) 0%, rgba(212, 251, 32, 0.08) 50%, transparent 80%)",
                 }}
             />
-            <div
+            {/* <div
                 className="absolute -bottom-36 -right-36 w-150 h-150 rounded-full pointer-events-none select-none blur-[120px] animate-glow-drift-2"
                 style={{
                     background: "radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.06) 50%, transparent 80%)",
                 }}
-            />
+            /> */}
             <div
                 className="absolute top-1/2 left-1/3 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none select-none blur-[130px] animate-hero-glow"
                 style={{

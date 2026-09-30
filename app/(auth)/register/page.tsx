@@ -23,7 +23,7 @@ export default function RegisterPage() {
             <div className="container mx-auto w-full flex-1 flex items-center justify-center my-6 sm:my-8 lg:my-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-14 w-full">
                     <div className="flex justify-center w-full">
-                        <AuthVisual title="Sign in with ease" subtitle="The Registration process is quick and straightforward, allowing you to create an account in just a few minutes." />
+                        <AuthVisual title="Sign in with ease" subtitle="Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge." />
                     </div>
 
                     <div className="flex justify-center lg:justify-end w-full">

@@ -23,8 +23,8 @@ export default function AuthVisual({ title, subtitle }: AuthVisualProps) {
     return (
         <div className="flex flex-col justify-center w-full max-w-138 py-2">
             <div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{title}</h2>
-                <p className="mt-3 text-white/80 text-sm sm:text-base leading-relaxed max-w-md font-normal">{subtitle}</p>
+                <h2 className="font-poppins font-semibold text-lg sm:text-[20px] text-white leading-snug">{title}</h2>
+                <p className="mt-3 font-satoshi font-normal text-base md:text-[18px] text-white/80 leading-relaxed max-w-md">{subtitle}</p>
             </div>
 
             <div className="relative w-full max-w-138 aspect-552/585 mt-6 sm:mt-10 select-none">
