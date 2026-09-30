@@ -51,7 +51,7 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
         },
         {
             title: "4. Building High-Converting Digital Assets",
-            url: "https://media.w3.org/2010/05/bunny/movie.mp4",
+            url: "https://media.w3.org/2010/05/bunny/trailer.mp4",
             duration: "04:30",
         },
         {
@@ -282,19 +282,8 @@ export default function CourseDetailsView({ course }: CourseDetailsViewProps) {
                             <div ref={videoRef} className="relative w-full aspect-16/10 rounded-[28px] sm:rounded-[36px] overflow-hidden bg-zinc-950 shadow-2xl border-4 border-white group">
                                 {isPlayingVideo ? (
                                     <div className="relative w-full h-full flex flex-col bg-black">
-                                        <video
-                                            key={demoVideos[selectedVideoIndex].url}
-                                            src={demoVideos[selectedVideoIndex].url}
-                                            controls
-                                            autoPlay
-                                            playsInline
-                                            className="w-full h-full object-contain"
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={() => setIsPlayingVideo(false)}
-                                            className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-black text-white text-xs font-semibold backdrop-blur-md cursor-pointer transition-all"
-                                        >
+                                        <video key={demoVideos[selectedVideoIndex].url} src={demoVideos[selectedVideoIndex].url} controls autoPlay playsInline className="w-full h-full object-contain" />
+                                        <button type="button" onClick={() => setIsPlayingVideo(false)} className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-black text-white text-xs font-semibold backdrop-blur-md cursor-pointer transition-all">
                                             Close Video
                                         </button>
                                     </div>

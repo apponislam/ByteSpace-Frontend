@@ -315,7 +315,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                                     type="button"
                                     onClick={handleCheckout}
                                     disabled={isCheckingOut}
-                                    className="w-full h-12 rounded-full bg-[#D4FB20] text-black font-semibold text-sm hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
+                                    className="w-full h-12 rounded-full bg-[#D4FB20] text-black font-semibold text-sm hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                                 >
                                     {isCheckingOut ? (
                                         <>
