@@ -216,8 +216,3 @@ ByteSpace-Frontend/
 - `npm run lint` - Runs ESLint code style and syntax checks.
 - `npx tsc --noEmit` - Validates TypeScript types across the entire project codebase.
 
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
