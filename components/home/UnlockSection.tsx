@@ -52,15 +52,18 @@ export default function UnlockSection() {
             <div className="container relative mx-auto px-4 z-20 flex flex-col items-center">
                 <h2 className="font-poppins font-semibold text-3xl sm:text-4xl lg:text-[44px] text-center text-white leading-[1.15]">
                     Unlock Your Potential as a
-                    <br className="hidden md:block" />
-                    Creator with ByteSpace
+                    <br className="hidden md:block" /> Creator with ByteSpace
                 </h2>
 
                 <p className="mt-6 text-center font-satoshi font-normal text-base md:text-[18px] text-white/80 leading-relaxed max-w-3xl">
-                    Experience the collaboration of numerous creators and an expanding selection of courses. Register now and become a part of a community comprising over 10,000 local and international creators. Utilize our Course Editor, and showcase your expertise by publishing your finest course on the ByteSpace Course Library.
+                    Experience the collaboration of numerous creators and an expanding selection of courses. Register now and become a part of a community comprising over 10,000 local and international creators. Utilize our Course Editor, and showcase your expertise by publishing your finest course
+                    on the ByteSpace Course Library.
                 </p>
 
-                <Link href="/register" className="mt-8 inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] hover:-translate-y-0.5 active:scale-95 transition-all duration-200 shadow-md shadow-black/15 cursor-pointer">
+                <Link
+                    href="/register"
+                    className="mt-8 inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#D4FB20] text-black font-semibold text-sm sm:text-base hover:bg-[#c3ea1a] hover:-translate-y-0.5 active:scale-95 transition-all duration-200 shadow-md shadow-black/15 cursor-pointer"
+                >
                     Join as Creator
                 </Link>
             </div>
