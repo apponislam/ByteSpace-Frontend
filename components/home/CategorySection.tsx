@@ -37,13 +37,13 @@ export default function CategorySection() {
     return (
         <section className="w-full bg-white py-20 sm:py-28 font-satoshi">
             <div className="container mx-auto px-4 flex flex-col items-center">
-                <h2 className="font-clash font-bold text-3xl sm:text-5xl md:text-6xl text-center tracking-tight text-black leading-[1.12]">
+                <h2 className="font-poppins font-semibold text-3xl sm:text-4xl lg:text-[44px] text-center text-black leading-[1.15]">
                     Discover Your Passion,
                     <br />
                     Build Your Skills
                 </h2>
 
-                <p className="mt-5 text-center text-sm sm:text-base text-zinc-500 mx-auto leading-relaxed font-normal">
+                <p className="mt-5 text-center font-satoshi font-normal text-base md:text-[18px] text-zinc-500 mx-auto leading-relaxed">
                     At ByteSpace Courses, we bring you closer to life-changing knowledge. Explore a variety of courses across different <br className="hidden sm:inline" /> fields, from technology to the arts, and make a difference in your career and life.
                 </p>
 

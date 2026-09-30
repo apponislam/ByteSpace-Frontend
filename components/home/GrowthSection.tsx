@@ -54,13 +54,13 @@ export default function GrowthSection() {
             <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col gap-24 sm:gap-32 lg:gap-40">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
                     <div className="flex flex-col">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-[#0F172A] tracking-tight leading-[1.12]">
+                        <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-poppins font-semibold text-[#0F172A] leading-[1.15]">
                             Your Path to Professional
                             <br />
                             Growth Starts Here!
                         </h2>
 
-                        <p className="mt-5 sm:mt-6 text-[#64748B] text-base sm:text-lg leading-relaxed max-w-xl font-normal">
+                        <p className="mt-5 sm:mt-6 font-satoshi font-normal text-base md:text-[18px] text-[#64748B] leading-relaxed max-w-xl">
                             Explore our curated selection of courses tailored to enhance your capabilities and accelerate your career journey. Whether you are looking to sharpen specific skills, gain industry expertise, or embark on a new career path entirely, we have the resources you need.
                         </p>
 
@@ -154,15 +154,13 @@ export default function GrowthSection() {
                     </div>
 
                     <div className="order-1 lg:order-2 flex flex-col">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-[#0F172A] tracking-tight leading-[1.12]">
+                        <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-poppins font-semibold text-[#0F172A] leading-[1.15]">
                             Create & Manage
                             <br />
                             Courses Easily.
                         </h2>
 
-                        <p className="mt-5 sm:mt-6 text-[#64748B] text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-                            <strong className="font-semibold text-zinc-900">ByteSpace</strong> supports individuals or entities in the creation, publication, and administration of educational courses.
-                        </p>
+                        <p className="mt-5 sm:mt-6 font-satoshi font-normal text-base md:text-[18px] text-[#64748B] leading-relaxed max-w-xl">ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.</p>
 
                         <ul className="mt-8 sm:mt-10 space-y-4">
                             {creatorFeatures.map((feature, idx) => (

@@ -44,13 +44,13 @@ export default function TestimonialSection() {
 
             <div className="container relative z-10 mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-                    <h2 className="font-clash font-bold text-3xl sm:text-5xl lg:text-[52px] tracking-tight text-zinc-950 leading-[1.15]">
+                    <h2 className="font-poppins font-semibold text-3xl sm:text-4xl lg:text-[44px] text-zinc-950 leading-[1.15]">
                         Discover What Our
                         <br />
                         Community Is Saying
                     </h2>
 
-                    <p className="text-zinc-600 text-sm sm:text-base leading-relaxed font-normal pt-2">
+                    <p className="font-satoshi font-normal text-base md:text-[18px] text-zinc-600 leading-relaxed pt-2">
                         At ByteSpace, our vibrant community of learners and creators is at the heart of what we do. Hear directly from those who have experienced the transformative journey of learning and creating on our platform. Explore testimonials that reflect the diverse perspectives of enthusiastic learners and accomplished creators.
                     </p>
                 </div>

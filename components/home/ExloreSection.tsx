@@ -47,11 +47,11 @@ export default function ExloreSection() {
             />
 
             <div className="container relative z-10 mx-auto px-4 flex flex-col items-center">
-                <h2 className="font-clash font-bold text-3xl sm:text-4xl md:text-5xl text-center tracking-tight text-zinc-950">
+                <h2 className="font-poppins font-semibold text-3xl sm:text-4xl lg:text-[44px] text-center text-zinc-950 leading-[1.15]">
                     Explore Diverse Learning Paths at Bytespace
                 </h2>
 
-                <p className="mt-4 text-center text-sm sm:text-base text-zinc-500 leading-relaxed font-normal max-w-2xl">
+                <p className="mt-4 text-center font-satoshi font-normal text-base md:text-[18px] text-zinc-500 leading-relaxed max-w-2xl">
                     At Bytespace, we believe in empowering individuals through knowledge. Our diverse range of courses spans various fields, ensuring there&apos;s something for everyone. Unleash your potential and explore our carefully curated categories.
                 </p>
 
