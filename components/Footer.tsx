@@ -29,6 +29,21 @@ export default function Footer() {
         { name: "About", href: "/about" },
     ];
 
+    const [email, setEmail] = React.useState("");
+    const [status, setStatus] = React.useState<"idle" | "loading" | "subscribed">("idle");
+
+    const handleSubscribe = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email.trim()) return;
+
+        setStatus("loading");
+        setTimeout(() => {
+            setStatus("subscribed");
+            setEmail("");
+            setTimeout(() => setStatus("idle"), 4000);
+        }, 800);
+    };
+
     return (
         <footer className="w-full bg-white pt-16 pb-12 font-satoshi font-normal">
             <div className="container mx-auto px-4 sm:px-6">
@@ -41,19 +56,32 @@ export default function Footer() {
 
                         <p className="mt-4 text-sm text-zinc-600 leading-relaxed font-normal">Stay Up to date with our latest features and releases by joining our newsletter.</p>
 
-                        <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 text-zinc-900">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                required
-                                className="w-full sm:w-[320px] px-5 py-3 rounded-full border border-zinc-300 text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-colors font-normal"
-                            />
-                            <button type="submit" className="rounded-full bg-[#D4FB20] text-black font-normal px-8 py-3 text-sm hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-sm cursor-pointer">
-                                Subscribe
+                        <form onSubmit={handleSubscribe} className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 text-zinc-900">
+                            <div className="relative flex-1">
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Enter your email"
+                                    required
+                                    disabled={status === "loading" || status === "subscribed"}
+                                    className="w-full sm:w-77.5 px-5 py-3 rounded-full border border-zinc-200 text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#0052FE]/40 focus:border-[#0052FE] transition-all font-normal disabled:bg-zinc-50"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={status === "loading" || status === "subscribed"}
+                                className="rounded-full bg-[#D4FB20] text-black font-semibold px-7 py-3 text-sm hover:bg-[#c3ea1a] active:scale-95 transition-all shadow-xs hover:shadow-md cursor-pointer disabled:opacity-80 shrink-0 flex items-center justify-center gap-2"
+                            >
+                                {status === "loading" ? <span>Subscribing...</span> : status === "subscribed" ? <span>Subscribed ✓</span> : <span>Subscribe</span>}
                             </button>
                         </form>
 
-                        <p className="mt-4 text-xs text-zinc-500 leading-normal font-normal">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+                        {status === "subscribed" ? (
+                            <p className="mt-3 text-xs text-emerald-600 font-medium">Thank you for subscribing! Check your inbox soon.</p>
+                        ) : (
+                            <p className="mt-4 text-xs text-zinc-500 leading-normal font-normal">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+                        )}
                     </div>
 
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:col-span-7 gap-8 lg:gap-12 pt-2">

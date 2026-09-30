@@ -197,15 +197,14 @@ html {
     transform: translateY(-5px);
   }
 }
-
-@keyframes heroPulseGlow {
+@keyframes haloPulseGlow {
   0%, 100% {
     opacity: 0.85;
-    transform: translateX(-50%) scale(1);
+    transform: scale(1);
   }
   50% {
     opacity: 1;
-    transform: translateX(-50%) scale(1.03);
+    transform: scale(1.04);
   }
 }
 
@@ -223,6 +222,10 @@ html {
 
 .animate-hero-glow {
   animation: heroPulseGlow 7s ease-in-out infinite;
+}
+
+.animate-halo-glow {
+  animation: haloPulseGlow 6s ease-in-out infinite;
 }
 
 /* Ambient Background Glow Motion */
