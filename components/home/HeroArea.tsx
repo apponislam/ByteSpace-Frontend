@@ -206,8 +206,8 @@ export default function HeroArea() {
 
                 <div className="relative w-full max-w-4xl mt-12 sm:mt-16 flex justify-center items-end min-h-115 sm:min-h-130 lg:min-h-145">
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-137.5 sm:w-200 lg:w-250 pointer-events-none select-none z-0">
-                        <div className="w-full h-full animate-hero-float-gentle">
-                            <Image src="/home/Hero/centerbackshpae.svg" alt="Center Back Halo" width={1149} height={442} priority className="w-full h-auto object-contain" />
+                        <div className="w-full h-full animate-halo-glow origin-bottom">
+                            <Image src="/home/Hero/centerbackshpae.svg" alt="Center Back Halo" width={1149} height={442} priority className="w-full h-auto object-contain block align-bottom" />
                         </div>
                     </div>
 
