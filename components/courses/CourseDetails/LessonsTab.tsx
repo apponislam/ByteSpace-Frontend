@@ -27,7 +27,7 @@ export default function LessonsTab({ onPlayVideo }: LessonsTabProps) {
         {
             title: "Module 4: Interactive Media and Engagement",
             desc: "Engage your audience with lessons like 'Creating Interactive Presentations' and 'Integrating Multimedia Elements.' Master the art of creating immersive digital experiences.",
-            videoUrl: "https://media.w3.org/2010/05/bunny/movie.mp4",
+            videoUrl: "https://media.w3.org/2010/05/bunny/trailer.mp4",
         },
         {
             title: "Module 5: Project Showcase and Critique",

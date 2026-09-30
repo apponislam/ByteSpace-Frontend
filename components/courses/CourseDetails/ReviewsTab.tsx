@@ -128,7 +128,7 @@ export default function ReviewsTab() {
                 key={filter.label}
                 type="button"
                 onClick={() => setSelectedRating(filter.value as number | "all")}
-                className={`inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                   isActive
                     ? "bg-[#D4FB20] text-black font-semibold shadow-xs"
                     : "border border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50"
