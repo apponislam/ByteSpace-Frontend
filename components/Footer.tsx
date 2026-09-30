@@ -114,7 +114,7 @@ export default function Footer() {
                 <div className="border-t border-zinc-200 mt-16 mb-8" />
 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-normal">
-                    <p>© 2023 ByteSpace All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} ByteSpace All rights reserved.</p>
 
                     <div className="flex items-center gap-6">
                         <Link href="/privacy-policy" className="hover:text-black transition-colors font-normal">

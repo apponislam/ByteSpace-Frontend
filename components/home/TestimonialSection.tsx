@@ -51,7 +51,8 @@ export default function TestimonialSection() {
                     </h2>
 
                     <p className="font-satoshi font-normal text-base md:text-[18px] text-zinc-600 leading-relaxed pt-2">
-                        At ByteSpace, our vibrant community of learners and creators is at the heart of what we do. Hear directly from those who have experienced the transformative journey of learning and creating on our platform. Explore testimonials that reflect the diverse perspectives of enthusiastic learners and accomplished creators.
+                        At ByteSpace, our vibrant community of learners and creators is at the heart of what we do. Hear directly from those who have experienced the transformative journey of learning and creating on our platform. Explore testimonials that reflect the diverse perspectives of
+                        enthusiastic learners and accomplished creators.
                     </p>
                 </div>
 
@@ -63,13 +64,7 @@ export default function TestimonialSection() {
                         >
                             <div className="flex items-center justify-between">
                                 <div className="size-16 rounded-full overflow-hidden shrink-0 bg-zinc-100">
-                                    <Image
-                                        src={t.avatar}
-                                        alt={t.name}
-                                        width={64}
-                                        height={64}
-                                        className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-300 group-hover:scale-105"
-                                    />
+                                    <Image src={t.avatar} alt={t.name} width={64} height={64} className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-300 group-hover:scale-105" />
                                 </div>
                                 <div className="flex items-center gap-1 text-amber-400">
                                     {[...Array(5)].map((_, i) => (
@@ -78,11 +73,11 @@ export default function TestimonialSection() {
                                 </div>
                             </div>
 
-                            <h4 className="font-clash font-bold text-lg text-zinc-950 mt-5">{t.name}</h4>
+                            <h4 className="font-poppins font-semibold text-[20px] text-zinc-950 mt-5">{t.name}</h4>
 
-                            <p className="text-sm font-medium text-[#0052FE] mt-0.5">{t.role}</p>
+                            <p className="text-[18px] font-normal text-[#003BE2] mt-0.5">{t.role}</p>
 
-                            <p className="mt-5 text-sm sm:text-[15px] text-zinc-600 leading-relaxed font-normal">{t.quote}</p>
+                            <p className="mt-5 text-[18px] text-zinc-600 leading-relaxed font-satoshi font-normal">{t.quote}</p>
                         </div>
                     ))}
                 </div>

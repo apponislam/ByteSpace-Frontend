@@ -261,4 +261,29 @@ html {
 .animate-glow-drift-2 {
   animation: glowDrift2 18s ease-in-out infinite;
   will-change: transform;
+}
+
+/* Custom Thin Scrollbar */
+.custom-thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #0052FE transparent;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 6px 0;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #0052FE;
+  border-radius: 9999px;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #003BE2;
 }

@@ -170,56 +170,56 @@ export default function CookieConsentManager() {
                             {/* Cookie Category Cards */}
                             <div className="space-y-3 sm:space-y-4">
                                 {/* Essential */}
-                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50/70 flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
-                                    <div className="space-y-1">
-                                        <div className="flex flex-wrap items-center gap-2">
-                                            <h5 className="font-bold text-sm text-zinc-900">Strictly Necessary Cookies</h5>
-                                            <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-zinc-200 text-zinc-700 inline-flex items-center gap-1">
-                                                <Lock className="w-3 h-3" /> Always Active
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50/70 space-y-2">
+                                    <div className="flex items-start justify-between gap-3">
+                                        <div className="space-y-1">
+                                            <h5 className="font-bold text-sm text-zinc-900 leading-tight">Strictly Necessary Cookies</h5>
+                                            <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-zinc-200 text-zinc-700 inline-flex items-center gap-1 w-fit">
+                                                <Lock className="w-3 h-3 shrink-0" /> Always Active
                                             </span>
                                         </div>
-                                        <p className="text-xs text-zinc-600 leading-normal">These cookies are essential for the website to function, enabling security, account authentication, and core platform operations. They cannot be disabled.</p>
+                                        <div className="relative inline-flex items-center cursor-not-allowed opacity-60 shrink-0 mt-0.5" aria-label="Always active lock indicator">
+                                            <div className="w-10 h-5.5 bg-zinc-900 rounded-full"></div>
+                                            <div className="absolute right-0.5 w-4 h-4 bg-white rounded-full"></div>
+                                        </div>
                                     </div>
-                                    <div className="relative inline-flex items-center cursor-not-allowed opacity-60 shrink-0 self-start sm:self-auto">
-                                        <div className="w-11 h-6 bg-zinc-900 rounded-full"></div>
-                                        <div className="absolute right-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
-                                    </div>
+                                    <p className="text-xs text-zinc-600 leading-normal">These cookies are essential for the website to function, enabling security, account authentication, and core platform operations. They cannot be disabled.</p>
                                 </div>
 
                                 {/* Analytics */}
-                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex flex-row items-start justify-between gap-3 sm:gap-4">
-                                    <div className="space-y-1">
-                                        <h5 className="font-bold text-sm text-zinc-900">Performance & Analytics Cookies</h5>
-                                        <p className="text-xs text-zinc-600 leading-normal">Help us understand how visitors interact with our courses and pages by collecting anonymous aggregate usage data, enabling continuous performance improvements.</p>
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors space-y-2">
+                                    <div className="flex items-start justify-between gap-3">
+                                        <h5 className="font-bold text-sm text-zinc-900 leading-tight">Performance &amp; Analytics Cookies</h5>
+                                        <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
+                                            <input type="checkbox" checked={preferences.analytics} onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })} className="sr-only peer" />
+                                            <div className="w-10 h-5.5 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-4.5 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-4.5 after:w-4.5 after:transition-all peer-checked:bg-zinc-900"></div>
+                                        </label>
                                     </div>
-                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
-                                        <input type="checkbox" checked={preferences.analytics} onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })} className="sr-only peer" />
-                                        <div className="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-zinc-900"></div>
-                                    </label>
+                                    <p className="text-xs text-zinc-600 leading-normal">Help us understand how visitors interact with our courses and pages by collecting anonymous aggregate usage data, enabling continuous performance improvements.</p>
                                 </div>
 
                                 {/* Functional */}
-                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex flex-row items-start justify-between gap-3 sm:gap-4">
-                                    <div className="space-y-1">
-                                        <h5 className="font-bold text-sm text-zinc-900">Functional Cookies</h5>
-                                        <p className="text-xs text-zinc-600 leading-normal">Enable enhanced functionality and personalization, such as remembering your course progress, video playback settings, and interface preferences.</p>
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors space-y-2">
+                                    <div className="flex items-start justify-between gap-3">
+                                        <h5 className="font-bold text-sm text-zinc-900 leading-tight">Functional Cookies</h5>
+                                        <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
+                                            <input type="checkbox" checked={preferences.functional} onChange={(e) => setPreferences({ ...preferences, functional: e.target.checked })} className="sr-only peer" />
+                                            <div className="w-10 h-5.5 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-4.5 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-4.5 after:w-4.5 after:transition-all peer-checked:bg-zinc-900"></div>
+                                        </label>
                                     </div>
-                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
-                                        <input type="checkbox" checked={preferences.functional} onChange={(e) => setPreferences({ ...preferences, functional: e.target.checked })} className="sr-only peer" />
-                                        <div className="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-zinc-900"></div>
-                                    </label>
+                                    <p className="text-xs text-zinc-600 leading-normal">Enable enhanced functionality and personalization, such as remembering your course progress, video playback settings, and interface preferences.</p>
                                 </div>
 
                                 {/* Marketing */}
-                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors flex flex-row items-start justify-between gap-3 sm:gap-4">
-                                    <div className="space-y-1">
-                                        <h5 className="font-bold text-sm text-zinc-900">Marketing & Targeting Cookies</h5>
-                                        <p className="text-xs text-zinc-600 leading-normal">Used to deliver relevant recommendations and advertisements tailored to your learning interests across our partner network.</p>
+                                <div className="p-3.5 sm:p-4 rounded-xl border border-zinc-200 hover:border-zinc-300 transition-colors space-y-2">
+                                    <div className="flex items-start justify-between gap-3">
+                                        <h5 className="font-bold text-sm text-zinc-900 leading-tight">Marketing &amp; Targeting Cookies</h5>
+                                        <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
+                                            <input type="checkbox" checked={preferences.marketing} onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })} className="sr-only peer" />
+                                            <div className="w-10 h-5.5 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-4.5 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-4.5 after:w-4.5 after:transition-all peer-checked:bg-zinc-900"></div>
+                                        </label>
                                     </div>
-                                    <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
-                                        <input type="checkbox" checked={preferences.marketing} onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })} className="sr-only peer" />
-                                        <div className="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-zinc-900"></div>
-                                    </label>
+                                    <p className="text-xs text-zinc-600 leading-normal">Used to deliver relevant recommendations and advertisements tailored to your learning interests across our partner network.</p>
                                 </div>
                             </div>
                         </div>

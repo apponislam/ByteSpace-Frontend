@@ -133,7 +133,7 @@ export default function HeroArea() {
 
                     {/* Dropdown Menu */}
                     {isOpen && trimmed.length > 0 && (
-                        <div className="absolute top-full left-1 right-1 mt-2 bg-white rounded-2xl shadow-2xl border border-zinc-100 overflow-hidden max-h-96 overflow-y-auto z-50">
+                        <div className="absolute top-full left-1 right-1 mt-2 bg-white rounded-2xl shadow-2xl border border-zinc-100 overflow-hidden max-h-96 overflow-y-auto custom-thin-scrollbar z-50 p-1">
                             {matchedCourses.length === 0 && matchedCreators.length === 0 ? (
                                 <div className="p-6 text-center">
                                     <p className="text-sm font-medium text-zinc-600">No courses or creators matching &ldquo;{query}&rdquo;</p>
